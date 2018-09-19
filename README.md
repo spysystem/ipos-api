@@ -127,10 +127,13 @@ Class | Method | HTTP request | Description
  - [MessageObject](docs/Model/MessageObject.md)
  - [MessagesResponseField](docs/Model/MessagesResponseField.md)
  - [Product](docs/Model/Product.md)
+ - [ProductRecordArray](docs/Model/ProductRecordArray.md)
  - [ProductRecordObject](docs/Model/ProductRecordObject.md)
  - [ProductType](docs/Model/ProductType.md)
+ - [ProductTypeRecordArray](docs/Model/ProductTypeRecordArray.md)
  - [ProductTypeRecordObject](docs/Model/ProductTypeRecordObject.md)
  - [SalesReport](docs/Model/SalesReport.md)
+ - [SalesReportRecordArray](docs/Model/SalesReportRecordArray.md)
  - [SalesReportRecordObject](docs/Model/SalesReportRecordObject.md)
  - [TokenResponseField](docs/Model/TokenResponseField.md)
 

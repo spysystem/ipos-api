@@ -57,7 +57,7 @@ class FindProductTypeResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'response' => '\iPosExchanger\Model\ProductTypeRecordObject[]',
+        'response' => '\iPosExchanger\Model\ProductTypeRecordArray',
         'messages' => '\iPosExchanger\Model\MessagesResponseField'
     ];
 
@@ -213,7 +213,7 @@ class FindProductTypeResponse implements ModelInterface, ArrayAccess
     /**
      * Gets response
      *
-     * @return \iPosExchanger\Model\ProductTypeRecordObject[]|null
+     * @return \iPosExchanger\Model\ProductTypeRecordArray|null
      */
     public function getResponse()
     {
@@ -223,7 +223,7 @@ class FindProductTypeResponse implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \iPosExchanger\Model\ProductTypeRecordObject[]|null $response response
+     * @param \iPosExchanger\Model\ProductTypeRecordArray|null $response response
      *
      * @return $this
      */

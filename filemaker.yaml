@@ -548,13 +548,19 @@ definitions:
         fieldData:
           $ref: '#/definitions/Product'
 
+  ProductRecordArray:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/ProductRecordObject'
+
   FindProductResponse:
     type: object
     properties:
       response:
-        type: array
-        items:
-          $ref: '#/definitions/ProductRecordObject'
+        $ref: '#/definitions/ProductRecordArray'
       messages:
         $ref: '#/definitions/MessagesResponseField'
 
@@ -591,13 +597,19 @@ definitions:
         fieldData:
           $ref: '#/definitions/ProductType'
 
+  ProductTypeRecordArray:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/ProductTypeRecordObject'
+
   FindProductTypeResponse:
     type: object
     properties:
       response:
-        type: array
-        items:
-          $ref: '#/definitions/ProductTypeRecordObject'
+        $ref: '#/definitions/ProductTypeRecordArray'
       messages:
         $ref: '#/definitions/MessagesResponseField'
 
@@ -653,13 +665,19 @@ definitions:
         fieldData:
           $ref: '#/definitions/SalesReport'
 
+  SalesReportRecordArray:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/SalesReportRecordObject'
+
   FindSalesReportResponse:
     type: object
     properties:
       response:
-        type: array
-        items:
-          $ref: '#/definitions/SalesReportRecordObject'
+        $ref: '#/definitions/SalesReportRecordArray'
       messages:
         $ref: '#/definitions/MessagesResponseField'
 

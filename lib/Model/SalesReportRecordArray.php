@@ -1,6 +1,6 @@
 <?php
 /**
- * FindProductResponse
+ * SalesReportRecordArray
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \iPosExchanger\ObjectSerializer;
 
 /**
- * FindProductResponse Class Doc Comment
+ * SalesReportRecordArray Class Doc Comment
  *
  * @category Class
  * @package  iPosExchanger
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FindProductResponse implements ModelInterface, ArrayAccess
+class SalesReportRecordArray implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FindProductResponse';
+    protected static $openAPIModelName = 'SalesReportRecordArray';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'response' => '\iPosExchanger\Model\ProductRecordArray',
-        'messages' => '\iPosExchanger\Model\MessagesResponseField'
+        'data' => '\iPosExchanger\Model\SalesReportRecordObject[]'
     ];
 
     /**
@@ -67,8 +66,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'response' => null,
-        'messages' => null
+        'data' => null
     ];
 
     /**
@@ -98,8 +96,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'response' => 'response',
-        'messages' => 'messages'
+        'data' => 'data'
     ];
 
     /**
@@ -108,8 +105,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'response' => 'setResponse',
-        'messages' => 'setMessages'
+        'data' => 'setData'
     ];
 
     /**
@@ -118,8 +114,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'response' => 'getResponse',
-        'messages' => 'getMessages'
+        'data' => 'getData'
     ];
 
     /**
@@ -182,8 +177,7 @@ class FindProductResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['response'] = isset($data['response']) ? $data['response'] : null;
-        $this->container['messages'] = isset($data['messages']) ? $data['messages'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -211,49 +205,25 @@ class FindProductResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets response
+     * Gets data
      *
-     * @return \iPosExchanger\Model\ProductRecordArray|null
+     * @return \iPosExchanger\Model\SalesReportRecordObject[]|null
      */
-    public function getResponse()
+    public function getData()
     {
-        return $this->container['response'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets response
+     * Sets data
      *
-     * @param \iPosExchanger\Model\ProductRecordArray|null $response response
+     * @param \iPosExchanger\Model\SalesReportRecordObject[]|null $data data
      *
      * @return $this
      */
-    public function setResponse($response)
+    public function setData($data)
     {
-        $this->container['response'] = $response;
-
-        return $this;
-    }
-
-    /**
-     * Gets messages
-     *
-     * @return \iPosExchanger\Model\MessagesResponseField|null
-     */
-    public function getMessages()
-    {
-        return $this->container['messages'];
-    }
-
-    /**
-     * Sets messages
-     *
-     * @param \iPosExchanger\Model\MessagesResponseField|null $messages messages
-     *
-     * @return $this
-     */
-    public function setMessages($messages)
-    {
-        $this->container['messages'] = $messages;
+        $this->container['data'] = $data;
 
         return $this;
     }

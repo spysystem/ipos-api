@@ -57,7 +57,7 @@ class FindSalesReportResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'response' => '\iPosExchanger\Model\SalesReportRecordObject[]',
+        'response' => '\iPosExchanger\Model\SalesReportRecordArray',
         'messages' => '\iPosExchanger\Model\MessagesResponseField'
     ];
 
@@ -213,7 +213,7 @@ class FindSalesReportResponse implements ModelInterface, ArrayAccess
     /**
      * Gets response
      *
-     * @return \iPosExchanger\Model\SalesReportRecordObject[]|null
+     * @return \iPosExchanger\Model\SalesReportRecordArray|null
      */
     public function getResponse()
     {
@@ -223,7 +223,7 @@ class FindSalesReportResponse implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \iPosExchanger\Model\SalesReportRecordObject[]|null $response response
+     * @param \iPosExchanger\Model\SalesReportRecordArray|null $response response
      *
      * @return $this
      */
