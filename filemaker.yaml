@@ -416,11 +416,6 @@ definitions:
       message:
         type: string
 
-  MessagesResponseField:
-    type: array
-    items:
-      $ref: '#/definitions/MessageObject'
-
   EmptyObject:
     type: object
 
@@ -428,7 +423,9 @@ definitions:
     type: object
     properties:
       messages:
-        $ref: '#/definitions/MessagesResponseField'
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
       response:
         $ref: '#/definitions/EmptyObject'
 
@@ -456,7 +453,9 @@ definitions:
       response:
         $ref: '#/definitions/CreateRecordResponseField'
       messages:
-        $ref: '#/definitions/MessagesResponseField'
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
 #endregion
 
 #region Authentication
@@ -473,8 +472,9 @@ definitions:
       response:
         $ref: '#/definitions/TokenResponseField'
       messages:
-        $ref: '#/definitions/MessagesResponseField'
-#endregion
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'#endregion
 
 #region Product
   Product:
@@ -562,7 +562,9 @@ definitions:
       response:
         $ref: '#/definitions/ProductRecordArray'
       messages:
-        $ref: '#/definitions/MessagesResponseField'
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
 
   CreateOrUpdateProductRequest:
     type: object
@@ -611,7 +613,9 @@ definitions:
       response:
         $ref: '#/definitions/ProductTypeRecordArray'
       messages:
-        $ref: '#/definitions/MessagesResponseField'
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
 
   CreateOrUpdateProductTypeRequest:
     type: object
@@ -679,7 +683,9 @@ definitions:
       response:
         $ref: '#/definitions/SalesReportRecordArray'
       messages:
-        $ref: '#/definitions/MessagesResponseField'
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
 
   CreateOrUpdateSalesReportRequest:
     type: object

@@ -125,7 +125,6 @@ Class | Method | HTTP request | Description
  - [FindSalesReportResponse](docs/Model/FindSalesReportResponse.md)
  - [InternalRecordFields](docs/Model/InternalRecordFields.md)
  - [MessageObject](docs/Model/MessageObject.md)
- - [MessagesResponseField](docs/Model/MessagesResponseField.md)
  - [Product](docs/Model/Product.md)
  - [ProductRecordArray](docs/Model/ProductRecordArray.md)
  - [ProductRecordObject](docs/Model/ProductRecordObject.md)

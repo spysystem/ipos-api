@@ -57,7 +57,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\iPosExchanger\Model\MessagesResponseField',
+        'messages' => '\iPosExchanger\Model\MessageObject[]',
         'response' => '\iPosExchanger\Model\EmptyObject'
     ];
 
@@ -213,7 +213,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
     /**
      * Gets messages
      *
-     * @return \iPosExchanger\Model\MessagesResponseField|null
+     * @return \iPosExchanger\Model\MessageObject[]|null
      */
     public function getMessages()
     {
@@ -223,7 +223,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
     /**
      * Sets messages
      *
-     * @param \iPosExchanger\Model\MessagesResponseField|null $messages messages
+     * @param \iPosExchanger\Model\MessageObject[]|null $messages messages
      *
      * @return $this
      */
