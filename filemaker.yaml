@@ -1,0 +1,711 @@
+swagger: '2.0'
+
+info:
+  title: 'iPos integration for FileMaker 17 API'
+  version: 1.0.0
+  description: 'OpenAPI description for the iPOS integration for FileMaker 17 API'
+  contact:
+    name: 'Thomas Hansen'
+    email: thomas@spysystem.dk
+    url: 'http://spysystem.dk'
+
+externalDocs:
+  url: 'https://fmhelp.filemaker.com/docs/17/en/dataapi/index.html'
+
+host: server02.ipos.dk
+basePath: /fmi/data/v1/databases
+
+schemes:
+  - https
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+securityDefinitions:
+  BasicAuthentication:
+    type: basic
+
+  Token:
+    type: apiKey
+    in: header
+    name: Authorization
+
+security:
+  - Token: []
+
+responses:
+  Unauthorized:
+    description: Unauthorized
+    schema:
+      $ref: '#/definitions/DefaultResponseObject'
+
+  FileMakerAPIError:
+    description: FileMaker Data API Error
+    schema:
+      $ref: '#/definitions/DefaultResponseObject'
+
+parameters:
+  strDatabase:
+    name: strDatabase
+    description: Target Database in FileMaker
+    type: string
+    in: path
+    required: true
+
+  iRecordID:
+    name: iRecordID
+    description: FileMaker record id
+    type: integer
+    in: path
+    required: true
+
+tags:
+  - name: Authentication
+    description: Authentication Operations
+  - name: Products
+    description: Product Operations
+  - name: ProductTypes
+    description: Product Type Operations
+  - name: SalesReports
+    description: Sales Reports Operations
+  - name: Deliveries
+    description: Deliveries Operations
+  - name: DeliveryLines
+    description: Delivery Lines Operations
+paths:
+
+#region Authentication
+  /{strDatabase}/sessions:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - Authentication
+      operationId: getDataToken
+      security:
+        - BasicAuthentication: []
+      summary: gets an authentication token (valid for 15 minutes)
+      parameters:
+      - name: data
+        in: body
+        description: Connecting data
+        schema:
+          $ref: '#/definitions/EmptyObject'
+      responses:
+        200:
+          description: Successfull Authentication
+          headers:
+            X-FM-Data-Access-Token:
+              type: string
+          schema:
+            $ref: '#/definitions/AuthenticationResponseObject'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+#endregion
+
+#region Products
+  /{strDatabase}/layouts/api_SPY_varer/_find:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - Products
+      operationId: findProducts
+      summary: finds a product based on its EAN code
+      parameters:
+      - name: data
+        in: body
+        description: Search data
+        schema:
+          $ref: '#/definitions/FindProductRequest'
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindProductResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+
+  /{strDatabase}/layouts/api_SPY_varer/records:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    get:
+      tags:
+        - Products
+      operationId: getProducts
+      summary: retrieves products
+      parameters:
+      - name: _offset
+        in: query
+        type: string
+        required: false
+      - name: _limit
+        in: query
+        type: string
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindProductResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+    post:
+      tags:
+        - Products
+      operationId: createProduct
+      summary: Creates a new product
+      parameters:
+      - name: data
+        in: body
+        description: Record to be created
+        schema:
+          $ref: '#/definitions/CreateOrUpdateProductRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CreateRecordResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+
+  /{strDatabase}/layouts/api_SPY_varer/records{iRecordID}:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+      - $ref: '#/parameters/iRecordID'
+    get:
+      tags:
+        - Products
+      operationId: getProduct
+      summary: retrieves a product
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindProductResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+    patch:
+      tags:
+        - Products
+      operationId: updateProduct
+      summary: Updates a product
+      parameters:
+      - name: data
+        in: body
+        schema:
+          $ref: '#/definitions/CreateOrUpdateProductRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DefaultResponseObject'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+#endregion
+
+#region Product Types
+  /{strDatabase}/layouts/api_SPY_varegrupper/_find:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - ProductTypes
+      operationId: findProductTypes
+      summary: finds a product type based on its Id
+      parameters:
+      - name: data
+        in: body
+        description: Search data
+        schema:
+          $ref: '#/definitions/FindProductTypeRequest'
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindProductTypeResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+
+  /{strDatabase}/layouts/api_SPY_varegrupper/records:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    get:
+      tags:
+        - ProductTypes
+      operationId: getProductTypes
+      summary: retrieves all product types
+      parameters:
+      - name: _offset
+        in: query
+        type: string
+        required: false
+      - name: _limit
+        in: query
+        type: string
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindProductTypeResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+    post:
+      tags:
+        - ProductTypes
+      operationId: createProductTypes
+      summary: Creates a new product type
+      parameters:
+      - name: data
+        in: body
+        description: Record to be created
+        schema:
+          $ref: '#/definitions/CreateOrUpdateProductTypeRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CreateRecordResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+#endregion
+
+#region Sales Reports
+  /{strDatabase}/layouts/api_SPY_Sale/_find:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - SalesReports
+      operationId: findSalesReports
+      summary: finds sales reports
+      parameters:
+      - name: data
+        in: body
+        description: Search data
+        schema:
+          $ref: '#/definitions/FindSalesReportRequest'
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindSalesReportResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+
+  /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID}:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+      - $ref: '#/parameters/iRecordID'
+    get:
+      tags:
+        - SalesReports
+      operationId: getSalesReport
+      summary: retrieves a Sales Report line
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindSalesReportResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+    patch:
+      tags:
+        - SalesReports
+      operationId: updateSalesReport
+      summary: Updates a Sales Report
+      parameters:
+      - name: data
+        in: body
+        schema:
+          $ref: '#/definitions/CreateOrUpdateSalesReportRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DefaultResponseObject'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+#endregion
+
+#region Deliveries
+  /{strDatabase}/layouts/api_SPY_Varemodtagelse/records:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - Deliveries
+      operationId: createDelivery
+      summary: Creates a new Delivery
+      parameters:
+      - name: data
+        in: body
+        description: Record to be created
+        schema:
+          $ref: '#/definitions/CreateOrUpdateDeliveryRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CreateRecordResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+#endregion
+
+#region Delivery Lines
+  /{strDatabase}/layouts/api_SPY_Varemodtagelse_linie/records:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - DeliveryLines
+      operationId: createDeliveryLine
+      summary: Creates a new Delivery Line
+      parameters:
+      - name: data
+        in: body
+        description: Record to be created
+        schema:
+          $ref: '#/definitions/CreateOrUpdateDeliveryLineRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CreateRecordResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+#endregion
+
+definitions:
+
+#region Common
+  MessageObject:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+
+  MessagesResponseField:
+    type: array
+    items:
+      $ref: '#/definitions/MessageObject'
+
+  EmptyObject:
+    type: object
+
+  DefaultResponseObject:
+    type: object
+    properties:
+      mesasges:
+        $ref: '#/definitions/MessagesResponseField'
+      response:
+        $ref: '#/definitions/EmptyObject'
+
+  InternalRecordFields:
+    type: object
+    properties:
+      portalData:
+        type: object
+      recordId:
+        type: integer
+      modId:
+        type: integer
+
+  CreateRecordResponseField:
+    type: object
+    properties:
+      recordId:
+        type: string
+      modId:
+        type: string
+
+  CreateRecordResponse:
+    type: object
+    properties:
+      response:
+        $ref: '#/definitions/CreateRecordResponseField'
+      messages:
+        $ref: '#/definitions/MessagesResponseField'
+#endregion
+
+#region Authentication
+  TokenResponseField:
+    type: object
+    properties:
+      token:
+        description: Authentication Token
+        type: string
+
+  AuthenticationResponseObject:
+    type: object
+    properties:
+      response:
+        $ref: '#/definitions/TokenResponseField'
+      messages:
+        $ref: '#/definitions/MessagesResponseField'
+#endregion
+
+#region Product
+  Product:
+    type: object
+    properties:
+      ID:
+        type: string
+        description: ID (= EAN)
+      EAN nr:
+        type: string
+        description: EAN code
+      Varetekst:
+        type: string
+        description: Style Name  + Color + Size (+Assortment)
+      VareBeskrivelse:
+        type: string
+        description: Type + Category + Quality + Weight + Country
+      Varenr_Leverandør:
+        type: string
+        description: Style No
+      Salgspris:
+        type: string
+        description: Sales Price
+      Salgspris Incl moms:
+        type: string
+        description: Sales price including taxes
+      Kostpris:
+        type: string
+        description: Engross Price customer currency
+      kostpris_DKK:
+        type: string
+        description: Engross Price DKK
+      Avance i Kr:
+        type: string
+        description: round(sales price - cost price, 2)
+      ID_varegruppe:
+        type: string
+        description: Spy Group ID
+      Lager Status ønskes:
+        type: string
+        description: Always set to 1
+      Color:
+        type: string
+        description: Color
+      Size:
+        type: string
+        description: Size
+      Moms_sats:
+        type: string
+        description: VAT
+      Saeson:
+        type: string
+        description: Season
+      Producent_navn:
+        type: string
+        description: Brand
+
+  FindProductRequest:
+    type: object
+    properties:
+      query:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+
+  ProductRecordObject:
+    allOf:
+    - $ref: '#/definitions/InternalRecordFields'
+    - type: object
+      properties:
+        fieldData:
+          $ref: '#/definitions/Product'
+
+  FindProductResponse:
+    type: object
+    properties:
+      response:
+        type: array
+        items:
+          $ref: '#/definitions/ProductRecordObject'
+      messages:
+        $ref: '#/definitions/MessagesResponseField'
+
+  CreateOrUpdateProductRequest:
+    type: object
+    properties:
+      fieldData:
+        $ref: '#/definitions/Product'
+#endregion
+
+#region Product Type
+  ProductType:
+    type: object
+    properties:
+      ID:
+        type: string
+      Gruppe:
+        type: string
+        description: Type name
+
+  FindProductTypeRequest:
+    type: object
+    properties:
+      query:
+        type: array
+        items:
+          $ref: '#/definitions/ProductType'
+
+  ProductTypeRecordObject:
+    allOf:
+    - $ref: '#/definitions/InternalRecordFields'
+    - type: object
+      properties:
+        fieldData:
+          $ref: '#/definitions/ProductType'
+
+  FindProductTypeResponse:
+    type: object
+    properties:
+      response:
+        type: array
+        items:
+          $ref: '#/definitions/ProductTypeRecordObject'
+      messages:
+        $ref: '#/definitions/MessagesResponseField'
+
+  CreateOrUpdateProductTypeRequest:
+    type: object
+    properties:
+      fieldData:
+        $ref: '#/definitions/ProductType'
+#endregion
+
+#region Sales Report
+  SalesReport:
+    type: object
+    properties:
+      Antal:
+        type: string
+      ean:
+        type: string
+      SPY_a_pris:
+        type: string
+      UI_dato_bon:
+        type: string
+      Læg_ikke_på_lager:
+        type: string
+      SPY_relevant:
+        type: string
+      SPY_done:
+        type: string
+      id_lokation:
+        type: string
+      tax_state_amount:
+        type: string
+      tax_city_amount:
+        type: string
+      tax_state_rate:
+        type: string
+      tax_city_rate:
+        type: string
+
+  FindSalesReportRequest:
+    type: object
+    properties:
+      query:
+        type: array
+        items:
+          $ref: '#/definitions/SalesReport'
+
+  SalesReportRecordObject:
+    allOf:
+    - $ref: '#/definitions/InternalRecordFields'
+    - type: object
+      properties:
+        fieldData:
+          $ref: '#/definitions/SalesReport'
+
+  FindSalesReportResponse:
+    type: object
+    properties:
+      response:
+        type: array
+        items:
+          $ref: '#/definitions/SalesReportRecordObject'
+      messages:
+        $ref: '#/definitions/MessagesResponseField'
+
+  CreateOrUpdateSalesReportRequest:
+    type: object
+    properties:
+      fieldData:
+        $ref: '#/definitions/SalesReport'
+#endregion
+
+#region Delivery
+  Delivery:
+    type: object
+    properties:
+      id_uuid:
+        type: string
+      id_lokation:
+        type: string
+      Dato_opr:
+        type: string
+
+  CreateOrUpdateDeliveryRequest:
+    type: object
+    properties:
+      fieldData:
+        $ref: '#/definitions/Delivery'
+#endregion
+
+#region Delivery Lines
+  DeliveryLine:
+    type: object
+    properties:
+      id_varemodtagelse:
+        type: string
+      id_vare:
+        type: string
+      Antal_modtaget:
+        type: string
+      EAN:
+        type: string
+      Kospris_nu:
+        type: string
+
+  CreateOrUpdateDeliveryLineRequest:
+    type: object
+    properties:
+      fieldData:
+        $ref: '#/definitions/DeliveryLine'
+#endregion

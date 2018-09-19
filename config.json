@@ -1,0 +1,8 @@
+{
+	"invokerPackage": "FileMaker",
+	"modelPackage": "Model",
+	"apiPackage": "Api",
+	"packagePath": "",
+	"composerVendorName": "spysystem",
+	"composerProjectName": "ipos-api"
+}
