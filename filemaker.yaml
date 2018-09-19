@@ -412,7 +412,7 @@ definitions:
     type: object
     properties:
       code:
-        type: integer
+        type: string
       message:
         type: string
 
@@ -435,9 +435,9 @@ definitions:
       portalData:
         type: object
       recordId:
-        type: integer
+        type: string
       modId:
-        type: integer
+        type: string
 
   CreateRecordResponseField:
     type: object

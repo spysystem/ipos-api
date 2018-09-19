@@ -57,7 +57,7 @@ class MessageObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
+        'code' => 'string',
         'message' => 'string'
     ];
 
@@ -213,7 +213,7 @@ class MessageObject implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCode()
     {
@@ -223,7 +223,7 @@ class MessageObject implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code code
+     * @param string|null $code code
      *
      * @return $this
      */

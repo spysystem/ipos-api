@@ -58,8 +58,8 @@ class InternalRecordFields implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'portal_data' => 'object',
-        'record_id' => 'int',
-        'mod_id' => 'int'
+        'record_id' => 'string',
+        'mod_id' => 'string'
     ];
 
     /**
@@ -243,7 +243,7 @@ class InternalRecordFields implements ModelInterface, ArrayAccess
     /**
      * Gets record_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getRecordId()
     {
@@ -253,7 +253,7 @@ class InternalRecordFields implements ModelInterface, ArrayAccess
     /**
      * Sets record_id
      *
-     * @param int|null $record_id record_id
+     * @param string|null $record_id record_id
      *
      * @return $this
      */
@@ -267,7 +267,7 @@ class InternalRecordFields implements ModelInterface, ArrayAccess
     /**
      * Gets mod_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getModId()
     {
@@ -277,7 +277,7 @@ class InternalRecordFields implements ModelInterface, ArrayAccess
     /**
      * Sets mod_id
      *
-     * @param int|null $mod_id mod_id
+     * @param string|null $mod_id mod_id
      *
      * @return $this
      */
