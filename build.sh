@@ -8,7 +8,7 @@ docker pull spysystem/openapi-generator
 docker run \
 	--user $(id -u):$(id -g) \
 	--rm -v ${PWD}:/local spysystem/openapi-generator:spy-master generate \
-	-i filemaker.yaml \
+	-i /local/filemaker.yaml \
 	-g php \
 	-o /local \
 	-c /local/config.json
