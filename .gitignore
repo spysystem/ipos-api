@@ -66,4 +66,3 @@ phpunit.xml.dist
 .idea/deployment.xml
 .idea/modules.xml
 .idea/ServerAdminClient.iml
-composer.lock
