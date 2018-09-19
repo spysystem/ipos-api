@@ -57,7 +57,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'mesasges' => '\iPosExchanger\Model\MessagesResponseField',
+        'messages' => '\iPosExchanger\Model\MessagesResponseField',
         'response' => '\iPosExchanger\Model\EmptyObject'
     ];
 
@@ -67,7 +67,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'mesasges' => null,
+        'messages' => null,
         'response' => null
     ];
 
@@ -98,7 +98,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'mesasges' => 'mesasges',
+        'messages' => 'messages',
         'response' => 'response'
     ];
 
@@ -108,7 +108,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'mesasges' => 'setMesasges',
+        'messages' => 'setMessages',
         'response' => 'setResponse'
     ];
 
@@ -118,7 +118,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'mesasges' => 'getMesasges',
+        'messages' => 'getMessages',
         'response' => 'getResponse'
     ];
 
@@ -182,7 +182,7 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['mesasges'] = isset($data['mesasges']) ? $data['mesasges'] : null;
+        $this->container['messages'] = isset($data['messages']) ? $data['messages'] : null;
         $this->container['response'] = isset($data['response']) ? $data['response'] : null;
     }
 
@@ -211,25 +211,25 @@ class DefaultResponseObject implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets mesasges
+     * Gets messages
      *
      * @return \iPosExchanger\Model\MessagesResponseField|null
      */
-    public function getMesasges()
+    public function getMessages()
     {
-        return $this->container['mesasges'];
+        return $this->container['messages'];
     }
 
     /**
-     * Sets mesasges
+     * Sets messages
      *
-     * @param \iPosExchanger\Model\MessagesResponseField|null $mesasges mesasges
+     * @param \iPosExchanger\Model\MessagesResponseField|null $messages messages
      *
      * @return $this
      */
-    public function setMesasges($mesasges)
+    public function setMessages($messages)
     {
-        $this->container['mesasges'] = $mesasges;
+        $this->container['messages'] = $messages;
 
         return $this;
     }

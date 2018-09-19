@@ -427,7 +427,7 @@ definitions:
   DefaultResponseObject:
     type: object
     properties:
-      mesasges:
+      messages:
         $ref: '#/definitions/MessagesResponseField'
       response:
         $ref: '#/definitions/EmptyObject'
