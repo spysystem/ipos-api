@@ -72,12 +72,12 @@ class ProductTypesApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for createProductTypes
+     * Test case for createProductType
      *
      * Creates a new product type.
      *
      */
-    public function testCreateProductTypes()
+    public function testCreateProductType()
     {
     }
 

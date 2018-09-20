@@ -270,7 +270,7 @@ paths:
     post:
       tags:
         - ProductTypes
-      operationId: createProductTypes
+      operationId: createProductType
       summary: Creates a new product type
       parameters:
       - name: data

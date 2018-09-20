@@ -90,7 +90,7 @@ Class | Method | HTTP request | Description
 *AuthenticationApi* | [**getDataToken**](docs/Api/AuthenticationApi.md#getdatatoken) | **POST** /{strDatabase}/sessions | gets an authentication token (valid for 15 minutes)
 *DeliveriesApi* | [**createDelivery**](docs/Api/DeliveriesApi.md#createdelivery) | **POST** /{strDatabase}/layouts/api_SPY_Varemodtagelse/records | Creates a new Delivery
 *DeliveryLinesApi* | [**createDeliveryLine**](docs/Api/DeliveryLinesApi.md#createdeliveryline) | **POST** /{strDatabase}/layouts/api_SPY_Varemodtagelse_linie/records | Creates a new Delivery Line
-*ProductTypesApi* | [**createProductTypes**](docs/Api/ProductTypesApi.md#createproducttypes) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/records | Creates a new product type
+*ProductTypesApi* | [**createProductType**](docs/Api/ProductTypesApi.md#createproducttype) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/records | Creates a new product type
 *ProductTypesApi* | [**findProductTypes**](docs/Api/ProductTypesApi.md#findproducttypes) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/_find | finds a product type based on its Id
 *ProductTypesApi* | [**getProductTypes**](docs/Api/ProductTypesApi.md#getproducttypes) | **GET** /{strDatabase}/layouts/api_SPY_varegrupper/records | retrieves all product types
 *ProductsApi* | [**createProduct**](docs/Api/ProductsApi.md#createproduct) | **POST** /{strDatabase}/layouts/api_SPY_varer/records | Creates a new product

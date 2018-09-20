@@ -4,13 +4,13 @@ All URIs are relative to *https://server02.ipos.dk/fmi/data/v1/databases*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createProductTypes**](ProductTypesApi.md#createProductTypes) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/records | Creates a new product type
+[**createProductType**](ProductTypesApi.md#createProductType) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/records | Creates a new product type
 [**findProductTypes**](ProductTypesApi.md#findProductTypes) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/_find | finds a product type based on its Id
 [**getProductTypes**](ProductTypesApi.md#getProductTypes) | **GET** /{strDatabase}/layouts/api_SPY_varegrupper/records | retrieves all product types
 
 
-# **createProductTypes**
-> \iPosExchanger\Model\CreateRecordResponse createProductTypes($str_database, $create_or_update_product_type_request)
+# **createProductType**
+> \iPosExchanger\Model\CreateRecordResponse createProductType($str_database, $create_or_update_product_type_request)
 
 Creates a new product type
 
@@ -34,10 +34,10 @@ $str_database = 'str_database_example'; // string | Target Database in FileMaker
 $create_or_update_product_type_request = new \iPosExchanger\Model\CreateOrUpdateProductTypeRequest(); // \iPosExchanger\Model\CreateOrUpdateProductTypeRequest | Record to be created
 
 try {
-    $result = $apiInstance->createProductTypes($str_database, $create_or_update_product_type_request);
+    $result = $apiInstance->createProductType($str_database, $create_or_update_product_type_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductTypesApi->createProductTypes: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductTypesApi->createProductType: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

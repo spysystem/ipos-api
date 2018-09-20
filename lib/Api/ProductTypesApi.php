@@ -117,7 +117,7 @@ class ProductTypesApi
     }
 
     /**
-     * Operation createProductTypes
+     * Operation createProductType
      *
      * Creates a new product type
      *
@@ -128,14 +128,14 @@ class ProductTypesApi
      * @throws \InvalidArgumentException
      * @return \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function createProductTypes($str_database, $create_or_update_product_type_request = null)
+    public function createProductType($str_database, $create_or_update_product_type_request = null)
     {
-        list($response) = $this->createProductTypesWithHttpInfo($str_database, $create_or_update_product_type_request);
+        list($response) = $this->createProductTypeWithHttpInfo($str_database, $create_or_update_product_type_request);
         return $response;
     }
 
     /**
-     * Operation createProductTypesWithHttpInfo
+     * Operation createProductTypeWithHttpInfo
      *
      * Creates a new product type
      *
@@ -146,9 +146,9 @@ class ProductTypesApi
      * @throws \InvalidArgumentException
      * @return array of \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProductTypesWithHttpInfo($str_database, $create_or_update_product_type_request = null)
+    public function createProductTypeWithHttpInfo($str_database, $create_or_update_product_type_request = null)
     {
-        $request = $this->createProductTypesRequest($str_database, $create_or_update_product_type_request);
+        $request = $this->createProductTypeRequest($str_database, $create_or_update_product_type_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -276,7 +276,7 @@ class ProductTypesApi
     }
 
     /**
-     * Operation createProductTypesAsync
+     * Operation createProductTypeAsync
      *
      * Creates a new product type
      *
@@ -286,9 +286,9 @@ class ProductTypesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductTypesAsync($str_database, $create_or_update_product_type_request = null)
+    public function createProductTypeAsync($str_database, $create_or_update_product_type_request = null)
     {
-        return $this->createProductTypesAsyncWithHttpInfo($str_database, $create_or_update_product_type_request)
+        return $this->createProductTypeAsyncWithHttpInfo($str_database, $create_or_update_product_type_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -297,7 +297,7 @@ class ProductTypesApi
     }
 
     /**
-     * Operation createProductTypesAsyncWithHttpInfo
+     * Operation createProductTypeAsyncWithHttpInfo
      *
      * Creates a new product type
      *
@@ -307,10 +307,10 @@ class ProductTypesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductTypesAsyncWithHttpInfo($str_database, $create_or_update_product_type_request = null)
+    public function createProductTypeAsyncWithHttpInfo($str_database, $create_or_update_product_type_request = null)
     {
         $returnType = '\iPosExchanger\Model\CreateRecordResponse';
-        $request = $this->createProductTypesRequest($str_database, $create_or_update_product_type_request);
+        $request = $this->createProductTypeRequest($str_database, $create_or_update_product_type_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -347,7 +347,7 @@ class ProductTypesApi
     }
 
     /**
-     * Create request for operation 'createProductTypes'
+     * Create request for operation 'createProductType'
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  \iPosExchanger\Model\CreateOrUpdateProductTypeRequest $create_or_update_product_type_request Record to be created (optional)
@@ -355,12 +355,12 @@ class ProductTypesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createProductTypesRequest($str_database, $create_or_update_product_type_request = null)
+    public function createProductTypeRequest($str_database, $create_or_update_product_type_request = null)
     {
         // verify the required parameter 'str_database' is set
         if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling createProductTypes'
+                'Missing the required parameter $str_database when calling createProductType'
             );
         }
 
