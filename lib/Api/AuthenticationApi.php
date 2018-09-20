@@ -126,7 +126,7 @@ class AuthenticationApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\AuthenticationResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\AuthenticationResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
     public function getDataToken($str_database, $empty_object = null)
     {
@@ -144,7 +144,7 @@ class AuthenticationApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\AuthenticationResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\AuthenticationResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDataTokenWithHttpInfo($str_database, $empty_object = null)
     {
@@ -225,6 +225,21 @@ class AuthenticationApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\iPosExchanger\Model\AuthenticationResponseObject';
@@ -263,6 +278,14 @@ class AuthenticationApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\iPosExchanger\Model\DefaultResponseObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\iPosExchanger\Model\DefaultResponseObject',

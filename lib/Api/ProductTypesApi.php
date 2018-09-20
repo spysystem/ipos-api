@@ -126,7 +126,7 @@ class ProductTypesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
     public function createProductType($str_database, $create_or_update_product_type_request = null)
     {
@@ -144,7 +144,7 @@ class ProductTypesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProductTypeWithHttpInfo($str_database, $create_or_update_product_type_request = null)
     {
@@ -225,6 +225,21 @@ class ProductTypesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\iPosExchanger\Model\CreateRecordResponse';
@@ -263,6 +278,14 @@ class ProductTypesApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\iPosExchanger\Model\DefaultResponseObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\iPosExchanger\Model\DefaultResponseObject',
@@ -463,7 +486,7 @@ class ProductTypesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
     public function findProductTypes($str_database, $find_product_type_request = null)
     {
@@ -481,7 +504,7 @@ class ProductTypesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function findProductTypesWithHttpInfo($str_database, $find_product_type_request = null)
     {
@@ -562,6 +585,21 @@ class ProductTypesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\iPosExchanger\Model\FindProductTypeResponse';
@@ -600,6 +638,14 @@ class ProductTypesApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\iPosExchanger\Model\DefaultResponseObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\iPosExchanger\Model\DefaultResponseObject',
@@ -801,7 +847,7 @@ class ProductTypesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
     public function getProductTypes($str_database, $_offset = null, $_limit = null)
     {
@@ -820,7 +866,7 @@ class ProductTypesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\FindProductTypeResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProductTypesWithHttpInfo($str_database, $_offset = null, $_limit = null)
     {
@@ -901,6 +947,21 @@ class ProductTypesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\iPosExchanger\Model\FindProductTypeResponse';
@@ -939,6 +1000,14 @@ class ProductTypesApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\iPosExchanger\Model\DefaultResponseObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\iPosExchanger\Model\DefaultResponseObject',

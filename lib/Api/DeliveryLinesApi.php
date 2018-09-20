@@ -126,7 +126,7 @@ class DeliveryLinesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
     public function createDeliveryLine($str_database, $create_or_update_delivery_line_request = null)
     {
@@ -144,7 +144,7 @@ class DeliveryLinesApi
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\CreateRecordResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDeliveryLineWithHttpInfo($str_database, $create_or_update_delivery_line_request = null)
     {
@@ -225,6 +225,21 @@ class DeliveryLinesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\iPosExchanger\Model\CreateRecordResponse';
@@ -263,6 +278,14 @@ class DeliveryLinesApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\iPosExchanger\Model\DefaultResponseObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\iPosExchanger\Model\DefaultResponseObject',

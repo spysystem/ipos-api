@@ -105,6 +105,8 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
 #endregion
 
 #region Products
@@ -130,6 +132,8 @@ paths:
         401:
           $ref: '#/responses/Unauthorized'
         404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
           $ref: '#/responses/FileMakerAPIError'
 
   /{strDatabase}/layouts/api_SPY_varer/records:
@@ -157,6 +161,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
     post:
       tags:
         - Products
@@ -177,6 +184,8 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
 
   /{strDatabase}/layouts/api_SPY_varer/records{iRecordID}:
     parameters:
@@ -196,6 +205,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
     patch:
       tags:
         - Products
@@ -214,6 +226,8 @@ paths:
         401:
           $ref: '#/responses/Unauthorized'
         404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
           $ref: '#/responses/FileMakerAPIError'
 #endregion
 
@@ -241,6 +255,8 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
 
   /{strDatabase}/layouts/api_SPY_varegrupper/records:
     parameters:
@@ -267,6 +283,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
     post:
       tags:
         - ProductTypes
@@ -287,6 +306,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
 #endregion
 
 #region Sales Reports
@@ -313,6 +335,8 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
 
   /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID}:
     parameters:
@@ -332,6 +356,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
     patch:
       tags:
         - SalesReports
@@ -351,6 +378,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
 #endregion
 
 #region Deliveries
@@ -377,6 +407,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
 #endregion
 
 #region Delivery Lines
@@ -403,6 +436,9 @@ paths:
           $ref: '#/responses/Unauthorized'
         404:
           $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
 #endregion
 
 definitions:
