@@ -1113,7 +1113,7 @@ class ProductsApi
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_varer/records{iRecordID}';
+        $resourcePath = '/{strDatabase}/layouts/api_SPY_varer/records/{iRecordID}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1859,7 +1859,7 @@ class ProductsApi
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_varer/records{iRecordID}';
+        $resourcePath = '/{strDatabase}/layouts/api_SPY_varer/records/{iRecordID}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

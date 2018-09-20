@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createProduct**](ProductsApi.md#createProduct) | **POST** /{strDatabase}/layouts/api_SPY_varer/records | Creates a new product
 [**findProducts**](ProductsApi.md#findProducts) | **POST** /{strDatabase}/layouts/api_SPY_varer/_find | finds a product based on its EAN code
-[**getProduct**](ProductsApi.md#getProduct) | **GET** /{strDatabase}/layouts/api_SPY_varer/records{iRecordID} | retrieves a product
+[**getProduct**](ProductsApi.md#getProduct) | **GET** /{strDatabase}/layouts/api_SPY_varer/records/{iRecordID} | retrieves a product
 [**getProducts**](ProductsApi.md#getProducts) | **GET** /{strDatabase}/layouts/api_SPY_varer/records | retrieves products
-[**updateProduct**](ProductsApi.md#updateProduct) | **PATCH** /{strDatabase}/layouts/api_SPY_varer/records{iRecordID} | Updates a product
+[**updateProduct**](ProductsApi.md#updateProduct) | **PATCH** /{strDatabase}/layouts/api_SPY_varer/records/{iRecordID} | Updates a product
 
 
 # **createProduct**

@@ -95,9 +95,9 @@ Class | Method | HTTP request | Description
 *ProductTypesApi* | [**getProductTypes**](docs/Api/ProductTypesApi.md#getproducttypes) | **GET** /{strDatabase}/layouts/api_SPY_varegrupper/records | retrieves all product types
 *ProductsApi* | [**createProduct**](docs/Api/ProductsApi.md#createproduct) | **POST** /{strDatabase}/layouts/api_SPY_varer/records | Creates a new product
 *ProductsApi* | [**findProducts**](docs/Api/ProductsApi.md#findproducts) | **POST** /{strDatabase}/layouts/api_SPY_varer/_find | finds a product based on its EAN code
-*ProductsApi* | [**getProduct**](docs/Api/ProductsApi.md#getproduct) | **GET** /{strDatabase}/layouts/api_SPY_varer/records{iRecordID} | retrieves a product
+*ProductsApi* | [**getProduct**](docs/Api/ProductsApi.md#getproduct) | **GET** /{strDatabase}/layouts/api_SPY_varer/records/{iRecordID} | retrieves a product
 *ProductsApi* | [**getProducts**](docs/Api/ProductsApi.md#getproducts) | **GET** /{strDatabase}/layouts/api_SPY_varer/records | retrieves products
-*ProductsApi* | [**updateProduct**](docs/Api/ProductsApi.md#updateproduct) | **PATCH** /{strDatabase}/layouts/api_SPY_varer/records{iRecordID} | Updates a product
+*ProductsApi* | [**updateProduct**](docs/Api/ProductsApi.md#updateproduct) | **PATCH** /{strDatabase}/layouts/api_SPY_varer/records/{iRecordID} | Updates a product
 *SalesReportsApi* | [**findSalesReports**](docs/Api/SalesReportsApi.md#findsalesreports) | **POST** /{strDatabase}/layouts/api_SPY_Sale/_find | finds sales reports
 *SalesReportsApi* | [**getSalesReport**](docs/Api/SalesReportsApi.md#getsalesreport) | **GET** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | retrieves a Sales Report line
 *SalesReportsApi* | [**updateSalesReport**](docs/Api/SalesReportsApi.md#updatesalesreport) | **PATCH** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | Updates a Sales Report

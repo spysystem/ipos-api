@@ -187,7 +187,7 @@ paths:
         500:
           $ref: '#/responses/FileMakerAPIError'
 
-  /{strDatabase}/layouts/api_SPY_varer/records{iRecordID}:
+  /{strDatabase}/layouts/api_SPY_varer/records/{iRecordID}:
     parameters:
       - $ref: '#/parameters/strDatabase'
       - $ref: '#/parameters/iRecordID'
