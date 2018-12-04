@@ -91,6 +91,16 @@ class ProductsApi
 
 		return $this;
 	}
+
+	/**
+	 * Gets the OpenAPI Spec Version
+	 *
+	 * @return string
+	 */
+	public static function getSpecVersion()
+	{
+		return '1.0.0';
+	}
 	#endregion
 
     /**

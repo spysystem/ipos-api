@@ -1,6 +1,6 @@
 <?php
 /**
- * SalesReportsApi
+ * StockLinesApi
  * PHP version 5
  *
  * @category Class
@@ -43,14 +43,14 @@ use iPosExchanger\HeaderSelector;
 use iPosExchanger\ObjectSerializer;
 
 /**
- * SalesReportsApi Class Doc Comment
+ * StockLinesApi Class Doc Comment
  *
  * @category Class
  * @package  iPosExchanger
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SalesReportsApi
+class StockLinesApi
 {
     /**
      * @var ClientInterface
@@ -127,38 +127,38 @@ class SalesReportsApi
     }
 
     /**
-     * Operation findSalesReports
+     * Operation findStockLines
      *
-     * finds sales reports
+     * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindSalesReportRequest $find_sales_report_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockItemsRequest $find_stock_items_request Search data (optional)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\FindSalesReportResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\FindStockItemsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function findSalesReports($str_database, $find_sales_report_request = null)
+    public function findStockLines($str_database, $find_stock_items_request = null)
     {
-        list($response) = $this->findSalesReportsWithHttpInfo($str_database, $find_sales_report_request);
+        list($response) = $this->findStockLinesWithHttpInfo($str_database, $find_stock_items_request);
         return $response;
     }
 
     /**
-     * Operation findSalesReportsWithHttpInfo
+     * Operation findStockLinesWithHttpInfo
      *
-     * finds sales reports
+     * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindSalesReportRequest $find_sales_report_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockItemsRequest $find_stock_items_request Search data (optional)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\FindSalesReportResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\FindStockItemsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function findSalesReportsWithHttpInfo($str_database, $find_sales_report_request = null)
+    public function findStockLinesWithHttpInfo($str_database, $find_stock_items_request = null)
     {
-        $request = $this->findSalesReportsRequest($str_database, $find_sales_report_request);
+        $request = $this->findStockLinesRequest($str_database, $find_stock_items_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -191,17 +191,17 @@ class SalesReportsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\iPosExchanger\Model\FindSalesReportResponse' === '\SplFileObject') {
+                    if ('\iPosExchanger\Model\FindStockItemsResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\FindSalesReportResponse' !== 'string') {
+                        if ('\iPosExchanger\Model\FindStockItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindSalesReportResponse', []),
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindStockItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -252,13 +252,13 @@ class SalesReportsApi
                     ];
             }
 
-            $returnType = '\iPosExchanger\Model\FindSalesReportResponse';
+            $returnType = '\iPosExchanger\Model\FindStockItemsResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
             } else {
                 $content = $responseBody->getContents();
-                if ('\iPosExchanger\Model\FindSalesReportResponse' !== 'string') {
+                if ('\iPosExchanger\Model\FindStockItemsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
@@ -274,7 +274,7 @@ class SalesReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\iPosExchanger\Model\FindSalesReportResponse',
+                        '\iPosExchanger\Model\FindStockItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,19 +309,19 @@ class SalesReportsApi
     }
 
     /**
-     * Operation findSalesReportsAsync
+     * Operation findStockLinesAsync
      *
-     * finds sales reports
+     * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindSalesReportRequest $find_sales_report_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockItemsRequest $find_stock_items_request Search data (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findSalesReportsAsync($str_database, $find_sales_report_request = null)
+    public function findStockLinesAsync($str_database, $find_stock_items_request = null)
     {
-        return $this->findSalesReportsAsyncWithHttpInfo($str_database, $find_sales_report_request)
+        return $this->findStockLinesAsyncWithHttpInfo($str_database, $find_stock_items_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -330,20 +330,20 @@ class SalesReportsApi
     }
 
     /**
-     * Operation findSalesReportsAsyncWithHttpInfo
+     * Operation findStockLinesAsyncWithHttpInfo
      *
-     * finds sales reports
+     * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindSalesReportRequest $find_sales_report_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockItemsRequest $find_stock_items_request Search data (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findSalesReportsAsyncWithHttpInfo($str_database, $find_sales_report_request = null)
+    public function findStockLinesAsyncWithHttpInfo($str_database, $find_stock_items_request = null)
     {
-        $returnType = '\iPosExchanger\Model\FindSalesReportResponse';
-        $request = $this->findSalesReportsRequest($str_database, $find_sales_report_request);
+        $returnType = '\iPosExchanger\Model\FindStockItemsResponse';
+        $request = $this->findStockLinesRequest($str_database, $find_stock_items_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -380,24 +380,24 @@ class SalesReportsApi
     }
 
     /**
-     * Create request for operation 'findSalesReports'
+     * Create request for operation 'findStockLines'
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindSalesReportRequest $find_sales_report_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockItemsRequest $find_stock_items_request Search data (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function findSalesReportsRequest($str_database, $find_sales_report_request = null)
+    public function findStockLinesRequest($str_database, $find_stock_items_request = null)
     {
         // verify the required parameter 'str_database' is set
         if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling findSalesReports'
+                'Missing the required parameter $str_database when calling findStockLines'
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_Sale/_find';
+        $resourcePath = '/{strDatabase}/layouts/api_lager/_find';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -416,8 +416,8 @@ class SalesReportsApi
 
         // body params
         $_tempBody = null;
-        if (isset($find_sales_report_request)) {
-            $_tempBody = $find_sales_report_request;
+        if (isset($find_stock_items_request)) {
+            $_tempBody = $find_stock_items_request;
         }
 
         if ($multipart) {
@@ -487,38 +487,38 @@ class SalesReportsApi
     }
 
     /**
-     * Operation getSalesReport
+     * Operation getStockLines
      *
-     * retrieves a Sales Report line
+     * retrieves a Stock line entry
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\FindSalesReportResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\FindStockItemsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function getSalesReport($str_database, $i_record_id)
+    public function getStockLines($str_database, $i_record_id)
     {
-        list($response) = $this->getSalesReportWithHttpInfo($str_database, $i_record_id);
+        list($response) = $this->getStockLinesWithHttpInfo($str_database, $i_record_id);
         return $response;
     }
 
     /**
-     * Operation getSalesReportWithHttpInfo
+     * Operation getStockLinesWithHttpInfo
      *
-     * retrieves a Sales Report line
+     * retrieves a Stock line entry
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\FindSalesReportResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\FindStockItemsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSalesReportWithHttpInfo($str_database, $i_record_id)
+    public function getStockLinesWithHttpInfo($str_database, $i_record_id)
     {
-        $request = $this->getSalesReportRequest($str_database, $i_record_id);
+        $request = $this->getStockLinesRequest($str_database, $i_record_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -551,17 +551,17 @@ class SalesReportsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\iPosExchanger\Model\FindSalesReportResponse' === '\SplFileObject') {
+                    if ('\iPosExchanger\Model\FindStockItemsResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\FindSalesReportResponse' !== 'string') {
+                        if ('\iPosExchanger\Model\FindStockItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindSalesReportResponse', []),
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindStockItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -612,13 +612,13 @@ class SalesReportsApi
                     ];
             }
 
-            $returnType = '\iPosExchanger\Model\FindSalesReportResponse';
+            $returnType = '\iPosExchanger\Model\FindStockItemsResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
             } else {
                 $content = $responseBody->getContents();
-                if ('\iPosExchanger\Model\FindSalesReportResponse' !== 'string') {
+                if ('\iPosExchanger\Model\FindStockItemsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
@@ -634,7 +634,7 @@ class SalesReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\iPosExchanger\Model\FindSalesReportResponse',
+                        '\iPosExchanger\Model\FindStockItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -669,9 +669,9 @@ class SalesReportsApi
     }
 
     /**
-     * Operation getSalesReportAsync
+     * Operation getStockLinesAsync
      *
-     * retrieves a Sales Report line
+     * retrieves a Stock line entry
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
@@ -679,9 +679,9 @@ class SalesReportsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSalesReportAsync($str_database, $i_record_id)
+    public function getStockLinesAsync($str_database, $i_record_id)
     {
-        return $this->getSalesReportAsyncWithHttpInfo($str_database, $i_record_id)
+        return $this->getStockLinesAsyncWithHttpInfo($str_database, $i_record_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -690,9 +690,9 @@ class SalesReportsApi
     }
 
     /**
-     * Operation getSalesReportAsyncWithHttpInfo
+     * Operation getStockLinesAsyncWithHttpInfo
      *
-     * retrieves a Sales Report line
+     * retrieves a Stock line entry
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
@@ -700,10 +700,10 @@ class SalesReportsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSalesReportAsyncWithHttpInfo($str_database, $i_record_id)
+    public function getStockLinesAsyncWithHttpInfo($str_database, $i_record_id)
     {
-        $returnType = '\iPosExchanger\Model\FindSalesReportResponse';
-        $request = $this->getSalesReportRequest($str_database, $i_record_id);
+        $returnType = '\iPosExchanger\Model\FindStockItemsResponse';
+        $request = $this->getStockLinesRequest($str_database, $i_record_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -740,7 +740,7 @@ class SalesReportsApi
     }
 
     /**
-     * Create request for operation 'getSalesReport'
+     * Create request for operation 'getStockLines'
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
@@ -748,22 +748,22 @@ class SalesReportsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSalesReportRequest($str_database, $i_record_id)
+    public function getStockLinesRequest($str_database, $i_record_id)
     {
         // verify the required parameter 'str_database' is set
         if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling getSalesReport'
+                'Missing the required parameter $str_database when calling getStockLines'
             );
         }
         // verify the required parameter 'i_record_id' is set
         if ($i_record_id === null || (is_array($i_record_id) && count($i_record_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $i_record_id when calling getSalesReport'
+                'Missing the required parameter $i_record_id when calling getStockLines'
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID}';
+        $resourcePath = '/{strDatabase}/layouts/api_lager/records/{iRecordID}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -851,385 +851,6 @@ class SalesReportsApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updateSalesReport
-     *
-     * Updates a Sales Report
-     *
-     * @param  string $str_database Target Database in FileMaker (required)
-     * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdateSalesReportRequest $create_or_update_sales_report_request create_or_update_sales_report_request (optional)
-     *
-     * @throws \iPosExchanger\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
-     */
-    public function updateSalesReport($str_database, $i_record_id, $create_or_update_sales_report_request = null)
-    {
-        list($response) = $this->updateSalesReportWithHttpInfo($str_database, $i_record_id, $create_or_update_sales_report_request);
-        return $response;
-    }
-
-    /**
-     * Operation updateSalesReportWithHttpInfo
-     *
-     * Updates a Sales Report
-     *
-     * @param  string $str_database Target Database in FileMaker (required)
-     * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdateSalesReportRequest $create_or_update_sales_report_request (optional)
-     *
-     * @throws \iPosExchanger\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updateSalesReportWithHttpInfo($str_database, $i_record_id, $create_or_update_sales_report_request = null)
-    {
-        $request = $this->updateSalesReportRequest($str_database, $i_record_id, $create_or_update_sales_report_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\iPosExchanger\Model\DefaultResponseObject' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\DefaultResponseObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\iPosExchanger\Model\DefaultResponseObject';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ('\iPosExchanger\Model\DefaultResponseObject' !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\iPosExchanger\Model\DefaultResponseObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\iPosExchanger\Model\DefaultResponseObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\iPosExchanger\Model\DefaultResponseObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\iPosExchanger\Model\DefaultResponseObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateSalesReportAsync
-     *
-     * Updates a Sales Report
-     *
-     * @param  string $str_database Target Database in FileMaker (required)
-     * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdateSalesReportRequest $create_or_update_sales_report_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateSalesReportAsync($str_database, $i_record_id, $create_or_update_sales_report_request = null)
-    {
-        return $this->updateSalesReportAsyncWithHttpInfo($str_database, $i_record_id, $create_or_update_sales_report_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateSalesReportAsyncWithHttpInfo
-     *
-     * Updates a Sales Report
-     *
-     * @param  string $str_database Target Database in FileMaker (required)
-     * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdateSalesReportRequest $create_or_update_sales_report_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateSalesReportAsyncWithHttpInfo($str_database, $i_record_id, $create_or_update_sales_report_request = null)
-    {
-        $returnType = '\iPosExchanger\Model\DefaultResponseObject';
-        $request = $this->updateSalesReportRequest($str_database, $i_record_id, $create_or_update_sales_report_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updateSalesReport'
-     *
-     * @param  string $str_database Target Database in FileMaker (required)
-     * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdateSalesReportRequest $create_or_update_sales_report_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function updateSalesReportRequest($str_database, $i_record_id, $create_or_update_sales_report_request = null)
-    {
-        // verify the required parameter 'str_database' is set
-        if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling updateSalesReport'
-            );
-        }
-        // verify the required parameter 'i_record_id' is set
-        if ($i_record_id === null || (is_array($i_record_id) && count($i_record_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $i_record_id when calling updateSalesReport'
-            );
-        }
-
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($str_database !== null) {
-            $resourcePath = str_replace(
-                '{' . 'strDatabase' . '}',
-                ObjectSerializer::toPathValue($str_database),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($i_record_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'iRecordID' . '}',
-                ObjectSerializer::toPathValue($i_record_id),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-        if (isset($create_or_update_sales_report_request)) {
-            $_tempBody = $create_or_update_sales_report_request;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if($headers['Content-Type'] !== 'application/json') {
-                $httpBody = $_tempBody;
-            } else {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

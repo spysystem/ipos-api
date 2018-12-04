@@ -101,6 +101,8 @@ Class | Method | HTTP request | Description
 *SalesReportsApi* | [**findSalesReports**](docs/Api/SalesReportsApi.md#findsalesreports) | **POST** /{strDatabase}/layouts/api_SPY_Sale/_find | finds sales reports
 *SalesReportsApi* | [**getSalesReport**](docs/Api/SalesReportsApi.md#getsalesreport) | **GET** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | retrieves a Sales Report line
 *SalesReportsApi* | [**updateSalesReport**](docs/Api/SalesReportsApi.md#updatesalesreport) | **PATCH** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | Updates a Sales Report
+*StockLinesApi* | [**findStockLines**](docs/Api/StockLinesApi.md#findstocklines) | **POST** /{strDatabase}/layouts/api_lager/_find | finds stock lines
+*StockLinesApi* | [**getStockLines**](docs/Api/StockLinesApi.md#getstocklines) | **GET** /{strDatabase}/layouts/api_lager/records/{iRecordID} | retrieves a Stock line entry
 
 
 ## Documentation For Models
@@ -123,6 +125,8 @@ Class | Method | HTTP request | Description
  - [FindProductTypeResponse](docs/Model/FindProductTypeResponse.md)
  - [FindSalesReportRequest](docs/Model/FindSalesReportRequest.md)
  - [FindSalesReportResponse](docs/Model/FindSalesReportResponse.md)
+ - [FindStockItemsRequest](docs/Model/FindStockItemsRequest.md)
+ - [FindStockItemsResponse](docs/Model/FindStockItemsResponse.md)
  - [InternalRecordFields](docs/Model/InternalRecordFields.md)
  - [MessageObject](docs/Model/MessageObject.md)
  - [Product](docs/Model/Product.md)
@@ -134,6 +138,9 @@ Class | Method | HTTP request | Description
  - [SalesReport](docs/Model/SalesReport.md)
  - [SalesReportRecordArray](docs/Model/SalesReportRecordArray.md)
  - [SalesReportRecordObject](docs/Model/SalesReportRecordObject.md)
+ - [StockItem](docs/Model/StockItem.md)
+ - [StockItemsRecordArray](docs/Model/StockItemsRecordArray.md)
+ - [StockItemsRecordObject](docs/Model/StockItemsRecordObject.md)
  - [TokenResponseField](docs/Model/TokenResponseField.md)
 
 

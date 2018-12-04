@@ -74,6 +74,8 @@ tags:
     description: Deliveries Operations
   - name: DeliveryLines
     description: Delivery Lines Operations
+  - name: StockLines
+    description: Stock Adjustment Operation
 paths:
 
 #region Authentication
@@ -381,6 +383,54 @@ paths:
         500:
           $ref: '#/responses/FileMakerAPIError'
 
+#endregion
+#region Stock
+  /{strDatabase}/layouts/api_lager/_find:
+    parameters:
+       - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - StockLines
+      operationId: findStockLines
+      summary: finds stock lines
+      parameters:
+      - name: data
+        in: body
+        description: Search data
+        schema:
+          $ref: '#/definitions/FindStockItemsRequest'
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindStockItemsResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
+  /{strDatabase}/layouts/api_lager/records/{iRecordID}:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+      - $ref: '#/parameters/iRecordID'
+    get:
+      tags:
+        - StockLines
+      operationId: getStockLines
+      summary: retrieves a Stock line entry
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindStockItemsResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
 #endregion
 
 #region Deliveries
@@ -728,6 +778,50 @@ definitions:
     properties:
       fieldData:
         $ref: '#/definitions/SalesReport'
+#endregion
+
+#region Stock
+  StockItem:
+    type: object
+    properties:
+      id_vare:
+        type: string
+      id_lokation:
+        type: string
+      Antal_på_lager:
+        type: string
+      dato_mod:
+        type: string
+  FindStockItemsRequest:
+    type: object
+    properties:
+      query:
+        type: array
+        items:
+          $ref: '#/definitions/StockItem'
+  StockItemsRecordObject:
+    allOf:
+      - $ref: '#/definitions/InternalRecordFields'
+      - type: object
+        properties:
+          fieldData:
+            $ref: '#/definitions/StockItem'
+  StockItemsRecordArray:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/StockItemsRecordObject'
+  FindStockItemsResponse:
+    type: object
+    properties:
+      response:
+        $ref: '#/definitions/StockItemsRecordArray'
+      messages:
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
 #endregion
 
 #region Delivery
