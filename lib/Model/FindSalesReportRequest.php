@@ -57,7 +57,9 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'query' => '\iPosExchanger\Model\SalesReport[]'
+        'query' => '\iPosExchanger\Model\SalesReport[]',
+        'limit' => 'string',
+        'offset' => 'string'
     ];
 
     /**
@@ -66,7 +68,9 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'query' => null
+        'query' => null,
+        'limit' => null,
+        'offset' => null
     ];
 
     /**
@@ -96,7 +100,9 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'query' => 'query'
+        'query' => 'query',
+        'limit' => 'limit',
+        'offset' => 'offset'
     ];
 
     /**
@@ -105,7 +111,9 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'query' => 'setQuery'
+        'query' => 'setQuery',
+        'limit' => 'setLimit',
+        'offset' => 'setOffset'
     ];
 
     /**
@@ -114,7 +122,9 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'query' => 'getQuery'
+        'query' => 'getQuery',
+        'limit' => 'getLimit',
+        'offset' => 'getOffset'
     ];
 
     /**
@@ -178,6 +188,8 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['query'] = isset($data['query']) ? $data['query'] : null;
+        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
+        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
     }
 
     /**
@@ -224,6 +236,54 @@ class FindSalesReportRequest implements ModelInterface, ArrayAccess
     public function setQuery($query)
     {
         $this->container['query'] = $query;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return string|null
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param string|null $limit limit
+     *
+     * @return $this
+     */
+    public function setLimit($limit)
+    {
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets offset
+     *
+     * @return string|null
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param string|null $offset offset
+     *
+     * @return $this
+     */
+    public function setOffset($offset)
+    {
+        $this->container['offset'] = $offset;
 
         return $this;
     }

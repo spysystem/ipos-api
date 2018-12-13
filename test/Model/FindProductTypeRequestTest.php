@@ -82,4 +82,18 @@ class FindProductTypeRequestTest extends \PHPUnit_Framework_TestCase
     public function testPropertyQuery()
     {
     }
+
+    /**
+     * Test attribute "limit"
+     */
+    public function testPropertyLimit()
+    {
+    }
+
+    /**
+     * Test attribute "offset"
+     */
+    public function testPropertyOffset()
+    {
+    }
 }
