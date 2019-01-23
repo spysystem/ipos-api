@@ -76,6 +76,8 @@ tags:
     description: Delivery Lines Operations
   - name: StockLines
     description: Stock Adjustment Operation
+  - name: Payments
+    description: Payments Operations
 paths:
 
 #region Authentication
@@ -488,7 +490,77 @@ paths:
           $ref: '#/responses/FileMakerAPIError'
         500:
           $ref: '#/responses/FileMakerAPIError'
+#endregion
 
+#region Payment Endpoints
+  /{strDatabase}/layouts/api_SPY_booking/_find:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - Payments
+      operationId: findPayments
+      summary: finds payments
+      parameters:
+      - name: data
+        in: body
+        description: Search data
+        schema:
+          $ref: '#/definitions/FindPaymentsRequest'
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindPaymentsResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
+  /{strDatabase}/layouts/api_SPY_booking/records/{iRecordID}:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+      - $ref: '#/parameters/iRecordID'
+    get:
+      tags:
+        - Payments
+      operationId: getPayment
+      summary: retrieves a Payment line
+      responses:
+        200:
+          description: successfull operation
+          schema:
+            $ref: '#/definitions/FindPaymentsResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
+    patch:
+      tags:
+        - Payments
+      operationId: updatePayment
+      summary: Updates a Payment
+      parameters:
+      - name: data
+        in: body
+        schema:
+          $ref: '#/definitions/CreateOrUpdatePaymentRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DefaultResponseObject'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
 #endregion
 
 definitions:
@@ -560,7 +632,8 @@ definitions:
       messages:
         type: array
         items:
-          $ref: '#/definitions/MessageObject'#endregion
+          $ref: '#/definitions/MessageObject'
+#endregion
 
 #region Product
   Product:
@@ -882,4 +955,72 @@ definitions:
     properties:
       fieldData:
         $ref: '#/definitions/DeliveryLine'
+#endregion
+
+#region Payments
+  Payment:
+    type: object
+    properties:
+      dato:
+        type: string
+      tekst:
+        type: string
+      kto_debet:
+        type: string
+      kto_kredit:
+        type: string
+      Beløb:
+        type: number
+      SPY_relevant:
+        type: string
+      SPY_done:
+        type: string
+      id_lokation:
+        type: string
+      spy_type:
+        type: string
+
+  FindPaymentsRequest:
+    type: object
+    properties:
+      query:
+        type: array
+        items:
+          $ref: '#/definitions/Payment'
+      limit:
+        type: string
+      offset:
+        type: string
+
+  PaymentRecordObject:
+    allOf:
+    - $ref: '#/definitions/InternalRecordFields'
+    - type: object
+      properties:
+        fieldData:
+          $ref: '#/definitions/Payment'
+
+  PaymentRecordArray:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/PaymentRecordObject'
+
+  FindPaymentsResponse:
+    type: object
+    properties:
+      response:
+        $ref: '#/definitions/PaymentRecordArray'
+      messages:
+        type: array
+        items:
+          $ref: '#/definitions/MessageObject'
+
+  CreateOrUpdatePaymentRequest:
+    type: object
+    properties:
+      fieldData:
+        $ref: '#/definitions/Payment'
 #endregion
