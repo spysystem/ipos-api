@@ -90,6 +90,9 @@ Class | Method | HTTP request | Description
 *AuthenticationApi* | [**getDataToken**](docs/Api/AuthenticationApi.md#getdatatoken) | **POST** /{strDatabase}/sessions | gets an authentication token (valid for 15 minutes)
 *DeliveriesApi* | [**createDelivery**](docs/Api/DeliveriesApi.md#createdelivery) | **POST** /{strDatabase}/layouts/api_SPY_Varemodtagelse/records | Creates a new Delivery
 *DeliveryLinesApi* | [**createDeliveryLine**](docs/Api/DeliveryLinesApi.md#createdeliveryline) | **POST** /{strDatabase}/layouts/api_SPY_Varemodtagelse_linie/records | Creates a new Delivery Line
+*PaymentsApi* | [**findPayments**](docs/Api/PaymentsApi.md#findpayments) | **POST** /{strDatabase}/layouts/api_SPY_booking/_find | finds payments
+*PaymentsApi* | [**getPayment**](docs/Api/PaymentsApi.md#getpayment) | **GET** /{strDatabase}/layouts/api_SPY_booking/records/{iRecordID} | retrieves a Payment line
+*PaymentsApi* | [**updatePayment**](docs/Api/PaymentsApi.md#updatepayment) | **PATCH** /{strDatabase}/layouts/api_SPY_booking/records/{iRecordID} | Updates a Payment
 *ProductTypesApi* | [**createProductType**](docs/Api/ProductTypesApi.md#createproducttype) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/records | Creates a new product type
 *ProductTypesApi* | [**findProductTypes**](docs/Api/ProductTypesApi.md#findproducttypes) | **POST** /{strDatabase}/layouts/api_SPY_varegrupper/_find | finds a product type based on its Id
 *ProductTypesApi* | [**getProductTypes**](docs/Api/ProductTypesApi.md#getproducttypes) | **GET** /{strDatabase}/layouts/api_SPY_varegrupper/records | retrieves all product types
@@ -110,6 +113,7 @@ Class | Method | HTTP request | Description
  - [AuthenticationResponseObject](docs/Model/AuthenticationResponseObject.md)
  - [CreateOrUpdateDeliveryLineRequest](docs/Model/CreateOrUpdateDeliveryLineRequest.md)
  - [CreateOrUpdateDeliveryRequest](docs/Model/CreateOrUpdateDeliveryRequest.md)
+ - [CreateOrUpdatePaymentRequest](docs/Model/CreateOrUpdatePaymentRequest.md)
  - [CreateOrUpdateProductRequest](docs/Model/CreateOrUpdateProductRequest.md)
  - [CreateOrUpdateProductTypeRequest](docs/Model/CreateOrUpdateProductTypeRequest.md)
  - [CreateOrUpdateSalesReportRequest](docs/Model/CreateOrUpdateSalesReportRequest.md)
@@ -119,6 +123,8 @@ Class | Method | HTTP request | Description
  - [Delivery](docs/Model/Delivery.md)
  - [DeliveryLine](docs/Model/DeliveryLine.md)
  - [EmptyObject](docs/Model/EmptyObject.md)
+ - [FindPaymentsRequest](docs/Model/FindPaymentsRequest.md)
+ - [FindPaymentsResponse](docs/Model/FindPaymentsResponse.md)
  - [FindProductRequest](docs/Model/FindProductRequest.md)
  - [FindProductResponse](docs/Model/FindProductResponse.md)
  - [FindProductTypeRequest](docs/Model/FindProductTypeRequest.md)
@@ -129,6 +135,9 @@ Class | Method | HTTP request | Description
  - [FindStockItemsResponse](docs/Model/FindStockItemsResponse.md)
  - [InternalRecordFields](docs/Model/InternalRecordFields.md)
  - [MessageObject](docs/Model/MessageObject.md)
+ - [Payment](docs/Model/Payment.md)
+ - [PaymentRecordArray](docs/Model/PaymentRecordArray.md)
+ - [PaymentRecordObject](docs/Model/PaymentRecordObject.md)
  - [Product](docs/Model/Product.md)
  - [ProductRecordArray](docs/Model/ProductRecordArray.md)
  - [ProductRecordObject](docs/Model/ProductRecordObject.md)
