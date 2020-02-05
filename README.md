@@ -83,7 +83,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://server02.ipos.dk/fmi/data/v1/databases*
+All URIs are relative to *https://fm.macpartner.dk/fmi/data/v1/databases*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -106,6 +106,9 @@ Class | Method | HTTP request | Description
 *SalesReportsApi* | [**updateSalesReport**](docs/Api/SalesReportsApi.md#updatesalesreport) | **PATCH** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | Updates a Sales Report
 *StockLinesApi* | [**findStockLines**](docs/Api/StockLinesApi.md#findstocklines) | **POST** /{strDatabase}/layouts/api_lager/_find | finds stock lines
 *StockLinesApi* | [**getStockLines**](docs/Api/StockLinesApi.md#getstocklines) | **GET** /{strDatabase}/layouts/api_lager/records/{iRecordID} | retrieves a Stock line entry
+*StockTransactionsApi* | [**findStockTransactions**](docs/Api/StockTransactionsApi.md#findstocktransactions) | **POST** /{strDatabase}/layouts/api_SPY_lagertrans/_find | finds stock Transactions (moves)
+*StockTransactionsApi* | [**getStockTransactions**](docs/Api/StockTransactionsApi.md#getstocktransactions) | **GET** /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID} | retrieves a Stock Transaction line
+*StockTransactionsApi* | [**updateStockTransaction**](docs/Api/StockTransactionsApi.md#updatestocktransaction) | **PATCH** /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID} | Updates a Stock Transaction
 
 
 ## Documentation For Models
@@ -117,6 +120,7 @@ Class | Method | HTTP request | Description
  - [CreateOrUpdateProductRequest](docs/Model/CreateOrUpdateProductRequest.md)
  - [CreateOrUpdateProductTypeRequest](docs/Model/CreateOrUpdateProductTypeRequest.md)
  - [CreateOrUpdateSalesReportRequest](docs/Model/CreateOrUpdateSalesReportRequest.md)
+ - [CreateOrUpdateStockTransactionRequest](docs/Model/CreateOrUpdateStockTransactionRequest.md)
  - [CreateRecordResponse](docs/Model/CreateRecordResponse.md)
  - [CreateRecordResponseField](docs/Model/CreateRecordResponseField.md)
  - [DefaultResponseObject](docs/Model/DefaultResponseObject.md)
@@ -133,6 +137,8 @@ Class | Method | HTTP request | Description
  - [FindSalesReportResponse](docs/Model/FindSalesReportResponse.md)
  - [FindStockItemsRequest](docs/Model/FindStockItemsRequest.md)
  - [FindStockItemsResponse](docs/Model/FindStockItemsResponse.md)
+ - [FindStockTransactionRequest](docs/Model/FindStockTransactionRequest.md)
+ - [FindStockTransactionResponse](docs/Model/FindStockTransactionResponse.md)
  - [InternalRecordFields](docs/Model/InternalRecordFields.md)
  - [MessageObject](docs/Model/MessageObject.md)
  - [Payment](docs/Model/Payment.md)
@@ -150,6 +156,9 @@ Class | Method | HTTP request | Description
  - [StockItem](docs/Model/StockItem.md)
  - [StockItemsRecordArray](docs/Model/StockItemsRecordArray.md)
  - [StockItemsRecordObject](docs/Model/StockItemsRecordObject.md)
+ - [StockTransaction](docs/Model/StockTransaction.md)
+ - [StockTransactionRecordArray](docs/Model/StockTransactionRecordArray.md)
+ - [StockTransactionRecordObject](docs/Model/StockTransactionRecordObject.md)
  - [TokenResponseField](docs/Model/TokenResponseField.md)
 
 

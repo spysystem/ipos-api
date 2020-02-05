@@ -1,6 +1,6 @@
 # iPosExchanger\StockLinesApi
 
-All URIs are relative to *https://server02.ipos.dk/fmi/data/v1/databases*
+All URIs are relative to *https://fm.macpartner.dk/fmi/data/v1/databases*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

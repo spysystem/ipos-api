@@ -1,6 +1,6 @@
 <?php
 /**
- * SalesReportTest
+ * StockTransactionTest
  *
  * PHP version 5
  *
@@ -30,15 +30,15 @@
 namespace iPosExchanger;
 
 /**
- * SalesReportTest Class Doc Comment
+ * StockTransactionTest Class Doc Comment
  *
  * @category    Class
- * @description SalesReport
+ * @description StockTransaction
  * @package     iPosExchanger
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class SalesReportTest extends \PHPUnit_Framework_TestCase
+class StockTransactionTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -70,58 +70,16 @@ class SalesReportTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "SalesReport"
+     * Test "StockTransaction"
      */
-    public function testSalesReport()
+    public function testStockTransaction()
     {
     }
 
     /**
-     * Test attribute "antal"
+     * Test attribute "id_vare"
      */
-    public function testPropertyAntal()
-    {
-    }
-
-    /**
-     * Test attribute "ean"
-     */
-    public function testPropertyEan()
-    {
-    }
-
-    /**
-     * Test attribute "spy_a_pris"
-     */
-    public function testPropertySpyAPris()
-    {
-    }
-
-    /**
-     * Test attribute "ui_dato_bon"
-     */
-    public function testPropertyUiDatoBon()
-    {
-    }
-
-    /**
-     * Test attribute "lg_ikke_p_lager"
-     */
-    public function testPropertyLgIkkePLager()
-    {
-    }
-
-    /**
-     * Test attribute "spy_relevant"
-     */
-    public function testPropertySpyRelevant()
-    {
-    }
-
-    /**
-     * Test attribute "spy_done"
-     */
-    public function testPropertySpyDone()
+    public function testPropertyIdVare()
     {
     }
 
@@ -133,37 +91,30 @@ class SalesReportTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "tax_state_amount"
+     * Test attribute "antal_lager"
      */
-    public function testPropertyTaxStateAmount()
+    public function testPropertyAntalLager()
     {
     }
 
     /**
-     * Test attribute "tax_city_amount"
+     * Test attribute "flytning"
      */
-    public function testPropertyTaxCityAmount()
+    public function testPropertyFlytning()
     {
     }
 
     /**
-     * Test attribute "tax_state_rate"
+     * Test attribute "spy_api_done"
      */
-    public function testPropertyTaxStateRate()
+    public function testPropertySpyApiDone()
     {
     }
 
     /**
-     * Test attribute "tax_city_rate"
+     * Test attribute "time_stamp"
      */
-    public function testPropertyTaxCityRate()
-    {
-    }
-
-    /**
-     * Test attribute "spy_id"
-     */
-    public function testPropertySpyId()
+    public function testPropertyTimeStamp()
     {
     }
 }

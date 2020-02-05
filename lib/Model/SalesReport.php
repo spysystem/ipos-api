@@ -68,7 +68,8 @@ class SalesReport implements ModelInterface, ArrayAccess
         'tax_state_amount' => 'string',
         'tax_city_amount' => 'string',
         'tax_state_rate' => 'string',
-        'tax_city_rate' => 'string'
+        'tax_city_rate' => 'string',
+        'spy_id' => 'string'
     ];
 
     /**
@@ -88,7 +89,8 @@ class SalesReport implements ModelInterface, ArrayAccess
         'tax_state_amount' => null,
         'tax_city_amount' => null,
         'tax_state_rate' => null,
-        'tax_city_rate' => null
+        'tax_city_rate' => null,
+        'spy_id' => null
     ];
 
     /**
@@ -129,7 +131,8 @@ class SalesReport implements ModelInterface, ArrayAccess
         'tax_state_amount' => 'tax_state_amount',
         'tax_city_amount' => 'tax_city_amount',
         'tax_state_rate' => 'tax_state_rate',
-        'tax_city_rate' => 'tax_city_rate'
+        'tax_city_rate' => 'tax_city_rate',
+        'spy_id' => 'SPY_id'
     ];
 
     /**
@@ -149,7 +152,8 @@ class SalesReport implements ModelInterface, ArrayAccess
         'tax_state_amount' => 'setTaxStateAmount',
         'tax_city_amount' => 'setTaxCityAmount',
         'tax_state_rate' => 'setTaxStateRate',
-        'tax_city_rate' => 'setTaxCityRate'
+        'tax_city_rate' => 'setTaxCityRate',
+        'spy_id' => 'setSpyId'
     ];
 
     /**
@@ -169,7 +173,8 @@ class SalesReport implements ModelInterface, ArrayAccess
         'tax_state_amount' => 'getTaxStateAmount',
         'tax_city_amount' => 'getTaxCityAmount',
         'tax_state_rate' => 'getTaxStateRate',
-        'tax_city_rate' => 'getTaxCityRate'
+        'tax_city_rate' => 'getTaxCityRate',
+        'spy_id' => 'getSpyId'
     ];
 
     /**
@@ -244,6 +249,7 @@ class SalesReport implements ModelInterface, ArrayAccess
         $this->container['tax_city_amount'] = isset($data['tax_city_amount']) ? $data['tax_city_amount'] : null;
         $this->container['tax_state_rate'] = isset($data['tax_state_rate']) ? $data['tax_state_rate'] : null;
         $this->container['tax_city_rate'] = isset($data['tax_city_rate']) ? $data['tax_city_rate'] : null;
+        $this->container['spy_id'] = isset($data['spy_id']) ? $data['spy_id'] : null;
     }
 
     /**
@@ -554,6 +560,30 @@ class SalesReport implements ModelInterface, ArrayAccess
     public function setTaxCityRate($tax_city_rate)
     {
         $this->container['tax_city_rate'] = $tax_city_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets spy_id
+     *
+     * @return string|null
+     */
+    public function getSpyId()
+    {
+        return $this->container['spy_id'];
+    }
+
+    /**
+     * Sets spy_id
+     *
+     * @param string|null $spy_id spy_id
+     *
+     * @return $this
+     */
+    public function setSpyId($spy_id)
+    {
+        $this->container['spy_id'] = $spy_id;
 
         return $this;
     }

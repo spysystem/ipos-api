@@ -874,6 +874,9 @@ class StockLinesApi
         }
 
 		#region SPY Code
+		$options[RequestOptions::HEADERS]	= [
+			'X-OpenAPISpecVersion'	=> '1.0.0',
+		];
 		$bEnableXDebug	= $this->bXDebugOnNextRequest;
 
 		if($bEnableXDebug === null)

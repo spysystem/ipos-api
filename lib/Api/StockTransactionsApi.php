@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentsApi
+ * StockTransactionsApi
  * PHP version 5
  *
  * @category Class
@@ -43,14 +43,14 @@ use iPosExchanger\HeaderSelector;
 use iPosExchanger\ObjectSerializer;
 
 /**
- * PaymentsApi Class Doc Comment
+ * StockTransactionsApi Class Doc Comment
  *
  * @category Class
  * @package  iPosExchanger
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PaymentsApi
+class StockTransactionsApi
 {
     /**
      * @var ClientInterface
@@ -127,38 +127,38 @@ class PaymentsApi
     }
 
     /**
-     * Operation findPayments
+     * Operation findStockTransactions
      *
-     * finds payments
+     * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindPaymentsRequest $find_payments_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockTransactionRequest $find_stock_transaction_request Search data (optional)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\FindPaymentsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\FindStockTransactionResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function findPayments($str_database, $find_payments_request = null)
+    public function findStockTransactions($str_database, $find_stock_transaction_request = null)
     {
-        list($response) = $this->findPaymentsWithHttpInfo($str_database, $find_payments_request);
+        list($response) = $this->findStockTransactionsWithHttpInfo($str_database, $find_stock_transaction_request);
         return $response;
     }
 
     /**
-     * Operation findPaymentsWithHttpInfo
+     * Operation findStockTransactionsWithHttpInfo
      *
-     * finds payments
+     * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindPaymentsRequest $find_payments_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockTransactionRequest $find_stock_transaction_request Search data (optional)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\FindPaymentsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\FindStockTransactionResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function findPaymentsWithHttpInfo($str_database, $find_payments_request = null)
+    public function findStockTransactionsWithHttpInfo($str_database, $find_stock_transaction_request = null)
     {
-        $request = $this->findPaymentsRequest($str_database, $find_payments_request);
+        $request = $this->findStockTransactionsRequest($str_database, $find_stock_transaction_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -191,17 +191,17 @@ class PaymentsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\iPosExchanger\Model\FindPaymentsResponse' === '\SplFileObject') {
+                    if ('\iPosExchanger\Model\FindStockTransactionResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\FindPaymentsResponse' !== 'string') {
+                        if ('\iPosExchanger\Model\FindStockTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindPaymentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindStockTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -252,13 +252,13 @@ class PaymentsApi
                     ];
             }
 
-            $returnType = '\iPosExchanger\Model\FindPaymentsResponse';
+            $returnType = '\iPosExchanger\Model\FindStockTransactionResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
             } else {
                 $content = $responseBody->getContents();
-                if ('\iPosExchanger\Model\FindPaymentsResponse' !== 'string') {
+                if ('\iPosExchanger\Model\FindStockTransactionResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
@@ -274,7 +274,7 @@ class PaymentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\iPosExchanger\Model\FindPaymentsResponse',
+                        '\iPosExchanger\Model\FindStockTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,19 +309,19 @@ class PaymentsApi
     }
 
     /**
-     * Operation findPaymentsAsync
+     * Operation findStockTransactionsAsync
      *
-     * finds payments
+     * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindPaymentsRequest $find_payments_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockTransactionRequest $find_stock_transaction_request Search data (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findPaymentsAsync($str_database, $find_payments_request = null)
+    public function findStockTransactionsAsync($str_database, $find_stock_transaction_request = null)
     {
-        return $this->findPaymentsAsyncWithHttpInfo($str_database, $find_payments_request)
+        return $this->findStockTransactionsAsyncWithHttpInfo($str_database, $find_stock_transaction_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -330,20 +330,20 @@ class PaymentsApi
     }
 
     /**
-     * Operation findPaymentsAsyncWithHttpInfo
+     * Operation findStockTransactionsAsyncWithHttpInfo
      *
-     * finds payments
+     * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindPaymentsRequest $find_payments_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockTransactionRequest $find_stock_transaction_request Search data (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findPaymentsAsyncWithHttpInfo($str_database, $find_payments_request = null)
+    public function findStockTransactionsAsyncWithHttpInfo($str_database, $find_stock_transaction_request = null)
     {
-        $returnType = '\iPosExchanger\Model\FindPaymentsResponse';
-        $request = $this->findPaymentsRequest($str_database, $find_payments_request);
+        $returnType = '\iPosExchanger\Model\FindStockTransactionResponse';
+        $request = $this->findStockTransactionsRequest($str_database, $find_stock_transaction_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -380,24 +380,24 @@ class PaymentsApi
     }
 
     /**
-     * Create request for operation 'findPayments'
+     * Create request for operation 'findStockTransactions'
      *
      * @param  string $str_database Target Database in FileMaker (required)
-     * @param  \iPosExchanger\Model\FindPaymentsRequest $find_payments_request Search data (optional)
+     * @param  \iPosExchanger\Model\FindStockTransactionRequest $find_stock_transaction_request Search data (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function findPaymentsRequest($str_database, $find_payments_request = null)
+    public function findStockTransactionsRequest($str_database, $find_stock_transaction_request = null)
     {
         // verify the required parameter 'str_database' is set
         if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling findPayments'
+                'Missing the required parameter $str_database when calling findStockTransactions'
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_booking/_find';
+        $resourcePath = '/{strDatabase}/layouts/api_SPY_lagertrans/_find';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -416,8 +416,8 @@ class PaymentsApi
 
         // body params
         $_tempBody = null;
-        if (isset($find_payments_request)) {
-            $_tempBody = $find_payments_request;
+        if (isset($find_stock_transaction_request)) {
+            $_tempBody = $find_stock_transaction_request;
         }
 
         if ($multipart) {
@@ -487,38 +487,38 @@ class PaymentsApi
     }
 
     /**
-     * Operation getPayment
+     * Operation getStockTransactions
      *
-     * retrieves a Payment line
+     * retrieves a Stock Transaction line
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \iPosExchanger\Model\FindPaymentsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
+     * @return \iPosExchanger\Model\FindStockTransactionResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function getPayment($str_database, $i_record_id)
+    public function getStockTransactions($str_database, $i_record_id)
     {
-        list($response) = $this->getPaymentWithHttpInfo($str_database, $i_record_id);
+        list($response) = $this->getStockTransactionsWithHttpInfo($str_database, $i_record_id);
         return $response;
     }
 
     /**
-     * Operation getPaymentWithHttpInfo
+     * Operation getStockTransactionsWithHttpInfo
      *
-     * retrieves a Payment line
+     * retrieves a Stock Transaction line
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \iPosExchanger\Model\FindPaymentsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \iPosExchanger\Model\FindStockTransactionResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPaymentWithHttpInfo($str_database, $i_record_id)
+    public function getStockTransactionsWithHttpInfo($str_database, $i_record_id)
     {
-        $request = $this->getPaymentRequest($str_database, $i_record_id);
+        $request = $this->getStockTransactionsRequest($str_database, $i_record_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -551,17 +551,17 @@ class PaymentsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\iPosExchanger\Model\FindPaymentsResponse' === '\SplFileObject') {
+                    if ('\iPosExchanger\Model\FindStockTransactionResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
-                        if ('\iPosExchanger\Model\FindPaymentsResponse' !== 'string') {
+                        if ('\iPosExchanger\Model\FindStockTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindPaymentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\iPosExchanger\Model\FindStockTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -612,13 +612,13 @@ class PaymentsApi
                     ];
             }
 
-            $returnType = '\iPosExchanger\Model\FindPaymentsResponse';
+            $returnType = '\iPosExchanger\Model\FindStockTransactionResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
             } else {
                 $content = $responseBody->getContents();
-                if ('\iPosExchanger\Model\FindPaymentsResponse' !== 'string') {
+                if ('\iPosExchanger\Model\FindStockTransactionResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
@@ -634,7 +634,7 @@ class PaymentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\iPosExchanger\Model\FindPaymentsResponse',
+                        '\iPosExchanger\Model\FindStockTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -669,9 +669,9 @@ class PaymentsApi
     }
 
     /**
-     * Operation getPaymentAsync
+     * Operation getStockTransactionsAsync
      *
-     * retrieves a Payment line
+     * retrieves a Stock Transaction line
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
@@ -679,9 +679,9 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPaymentAsync($str_database, $i_record_id)
+    public function getStockTransactionsAsync($str_database, $i_record_id)
     {
-        return $this->getPaymentAsyncWithHttpInfo($str_database, $i_record_id)
+        return $this->getStockTransactionsAsyncWithHttpInfo($str_database, $i_record_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -690,9 +690,9 @@ class PaymentsApi
     }
 
     /**
-     * Operation getPaymentAsyncWithHttpInfo
+     * Operation getStockTransactionsAsyncWithHttpInfo
      *
-     * retrieves a Payment line
+     * retrieves a Stock Transaction line
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
@@ -700,10 +700,10 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPaymentAsyncWithHttpInfo($str_database, $i_record_id)
+    public function getStockTransactionsAsyncWithHttpInfo($str_database, $i_record_id)
     {
-        $returnType = '\iPosExchanger\Model\FindPaymentsResponse';
-        $request = $this->getPaymentRequest($str_database, $i_record_id);
+        $returnType = '\iPosExchanger\Model\FindStockTransactionResponse';
+        $request = $this->getStockTransactionsRequest($str_database, $i_record_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -740,7 +740,7 @@ class PaymentsApi
     }
 
     /**
-     * Create request for operation 'getPayment'
+     * Create request for operation 'getStockTransactions'
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
@@ -748,22 +748,22 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPaymentRequest($str_database, $i_record_id)
+    public function getStockTransactionsRequest($str_database, $i_record_id)
     {
         // verify the required parameter 'str_database' is set
         if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling getPayment'
+                'Missing the required parameter $str_database when calling getStockTransactions'
             );
         }
         // verify the required parameter 'i_record_id' is set
         if ($i_record_id === null || (is_array($i_record_id) && count($i_record_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $i_record_id when calling getPayment'
+                'Missing the required parameter $i_record_id when calling getStockTransactions'
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_booking/records/{iRecordID}';
+        $resourcePath = '/{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -858,40 +858,40 @@ class PaymentsApi
     }
 
     /**
-     * Operation updatePayment
+     * Operation updateStockTransaction
      *
-     * Updates a Payment
+     * Updates a Stock Transaction
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdatePaymentRequest $create_or_update_payment_request create_or_update_payment_request (optional)
+     * @param  \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest $create_or_update_stock_transaction_request create_or_update_stock_transaction_request (optional)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function updatePayment($str_database, $i_record_id, $create_or_update_payment_request = null)
+    public function updateStockTransaction($str_database, $i_record_id, $create_or_update_stock_transaction_request = null)
     {
-        list($response) = $this->updatePaymentWithHttpInfo($str_database, $i_record_id, $create_or_update_payment_request);
+        list($response) = $this->updateStockTransactionWithHttpInfo($str_database, $i_record_id, $create_or_update_stock_transaction_request);
         return $response;
     }
 
     /**
-     * Operation updatePaymentWithHttpInfo
+     * Operation updateStockTransactionWithHttpInfo
      *
-     * Updates a Payment
+     * Updates a Stock Transaction
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdatePaymentRequest $create_or_update_payment_request (optional)
+     * @param  \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest $create_or_update_stock_transaction_request (optional)
      *
      * @throws \iPosExchanger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePaymentWithHttpInfo($str_database, $i_record_id, $create_or_update_payment_request = null)
+    public function updateStockTransactionWithHttpInfo($str_database, $i_record_id, $create_or_update_stock_transaction_request = null)
     {
-        $request = $this->updatePaymentRequest($str_database, $i_record_id, $create_or_update_payment_request);
+        $request = $this->updateStockTransactionRequest($str_database, $i_record_id, $create_or_update_stock_transaction_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1042,20 +1042,20 @@ class PaymentsApi
     }
 
     /**
-     * Operation updatePaymentAsync
+     * Operation updateStockTransactionAsync
      *
-     * Updates a Payment
+     * Updates a Stock Transaction
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdatePaymentRequest $create_or_update_payment_request (optional)
+     * @param  \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest $create_or_update_stock_transaction_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePaymentAsync($str_database, $i_record_id, $create_or_update_payment_request = null)
+    public function updateStockTransactionAsync($str_database, $i_record_id, $create_or_update_stock_transaction_request = null)
     {
-        return $this->updatePaymentAsyncWithHttpInfo($str_database, $i_record_id, $create_or_update_payment_request)
+        return $this->updateStockTransactionAsyncWithHttpInfo($str_database, $i_record_id, $create_or_update_stock_transaction_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1064,21 +1064,21 @@ class PaymentsApi
     }
 
     /**
-     * Operation updatePaymentAsyncWithHttpInfo
+     * Operation updateStockTransactionAsyncWithHttpInfo
      *
-     * Updates a Payment
+     * Updates a Stock Transaction
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdatePaymentRequest $create_or_update_payment_request (optional)
+     * @param  \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest $create_or_update_stock_transaction_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePaymentAsyncWithHttpInfo($str_database, $i_record_id, $create_or_update_payment_request = null)
+    public function updateStockTransactionAsyncWithHttpInfo($str_database, $i_record_id, $create_or_update_stock_transaction_request = null)
     {
         $returnType = '\iPosExchanger\Model\DefaultResponseObject';
-        $request = $this->updatePaymentRequest($str_database, $i_record_id, $create_or_update_payment_request);
+        $request = $this->updateStockTransactionRequest($str_database, $i_record_id, $create_or_update_stock_transaction_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1115,31 +1115,31 @@ class PaymentsApi
     }
 
     /**
-     * Create request for operation 'updatePayment'
+     * Create request for operation 'updateStockTransaction'
      *
      * @param  string $str_database Target Database in FileMaker (required)
      * @param  int $i_record_id FileMaker record id (required)
-     * @param  \iPosExchanger\Model\CreateOrUpdatePaymentRequest $create_or_update_payment_request (optional)
+     * @param  \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest $create_or_update_stock_transaction_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePaymentRequest($str_database, $i_record_id, $create_or_update_payment_request = null)
+    public function updateStockTransactionRequest($str_database, $i_record_id, $create_or_update_stock_transaction_request = null)
     {
         // verify the required parameter 'str_database' is set
         if ($str_database === null || (is_array($str_database) && count($str_database) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $str_database when calling updatePayment'
+                'Missing the required parameter $str_database when calling updateStockTransaction'
             );
         }
         // verify the required parameter 'i_record_id' is set
         if ($i_record_id === null || (is_array($i_record_id) && count($i_record_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $i_record_id when calling updatePayment'
+                'Missing the required parameter $i_record_id when calling updateStockTransaction'
             );
         }
 
-        $resourcePath = '/{strDatabase}/layouts/api_SPY_booking/records/{iRecordID}';
+        $resourcePath = '/{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1166,8 +1166,8 @@ class PaymentsApi
 
         // body params
         $_tempBody = null;
-        if (isset($create_or_update_payment_request)) {
-            $_tempBody = $create_or_update_payment_request;
+        if (isset($create_or_update_stock_transaction_request)) {
+            $_tempBody = $create_or_update_stock_transaction_request;
         }
 
         if ($multipart) {

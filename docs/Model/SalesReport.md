@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **tax_city_amount** | **string** |  | [optional] 
 **tax_state_rate** | **string** |  | [optional] 
 **tax_city_rate** | **string** |  | [optional] 
+**spy_id** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

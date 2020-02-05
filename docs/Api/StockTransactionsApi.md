@@ -1,18 +1,18 @@
-# iPosExchanger\PaymentsApi
+# iPosExchanger\StockTransactionsApi
 
 All URIs are relative to *https://fm.macpartner.dk/fmi/data/v1/databases*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**findPayments**](PaymentsApi.md#findPayments) | **POST** /{strDatabase}/layouts/api_SPY_booking/_find | finds payments
-[**getPayment**](PaymentsApi.md#getPayment) | **GET** /{strDatabase}/layouts/api_SPY_booking/records/{iRecordID} | retrieves a Payment line
-[**updatePayment**](PaymentsApi.md#updatePayment) | **PATCH** /{strDatabase}/layouts/api_SPY_booking/records/{iRecordID} | Updates a Payment
+[**findStockTransactions**](StockTransactionsApi.md#findStockTransactions) | **POST** /{strDatabase}/layouts/api_SPY_lagertrans/_find | finds stock Transactions (moves)
+[**getStockTransactions**](StockTransactionsApi.md#getStockTransactions) | **GET** /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID} | retrieves a Stock Transaction line
+[**updateStockTransaction**](StockTransactionsApi.md#updateStockTransaction) | **PATCH** /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID} | Updates a Stock Transaction
 
 
-# **findPayments**
-> \iPosExchanger\Model\FindPaymentsResponse findPayments($str_database, $find_payments_request)
+# **findStockTransactions**
+> \iPosExchanger\Model\FindStockTransactionResponse findStockTransactions($str_database, $find_stock_transaction_request)
 
-finds payments
+finds stock Transactions (moves)
 
 ### Example
 ```php
@@ -24,20 +24,20 @@ $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKey('Aut
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new iPosExchanger\Api\PaymentsApi(
+$apiInstance = new iPosExchanger\Api\StockTransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $str_database = 'str_database_example'; // string | Target Database in FileMaker
-$find_payments_request = new \iPosExchanger\Model\FindPaymentsRequest(); // \iPosExchanger\Model\FindPaymentsRequest | Search data
+$find_stock_transaction_request = new \iPosExchanger\Model\FindStockTransactionRequest(); // \iPosExchanger\Model\FindStockTransactionRequest | Search data
 
 try {
-    $result = $apiInstance->findPayments($str_database, $find_payments_request);
+    $result = $apiInstance->findStockTransactions($str_database, $find_stock_transaction_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentsApi->findPayments: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StockTransactionsApi->findStockTransactions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -47,11 +47,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **str_database** | **string**| Target Database in FileMaker |
- **find_payments_request** | [**\iPosExchanger\Model\FindPaymentsRequest**](../Model/FindPaymentsRequest.md)| Search data | [optional]
+ **find_stock_transaction_request** | [**\iPosExchanger\Model\FindStockTransactionRequest**](../Model/FindStockTransactionRequest.md)| Search data | [optional]
 
 ### Return type
 
-[**\iPosExchanger\Model\FindPaymentsResponse**](../Model/FindPaymentsResponse.md)
+[**\iPosExchanger\Model\FindStockTransactionResponse**](../Model/FindStockTransactionResponse.md)
 
 ### Authorization
 
@@ -64,10 +64,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getPayment**
-> \iPosExchanger\Model\FindPaymentsResponse getPayment($str_database, $i_record_id)
+# **getStockTransactions**
+> \iPosExchanger\Model\FindStockTransactionResponse getStockTransactions($str_database, $i_record_id)
 
-retrieves a Payment line
+retrieves a Stock Transaction line
 
 ### Example
 ```php
@@ -79,7 +79,7 @@ $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKey('Aut
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new iPosExchanger\Api\PaymentsApi(
+$apiInstance = new iPosExchanger\Api\StockTransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -89,10 +89,10 @@ $str_database = 'str_database_example'; // string | Target Database in FileMaker
 $i_record_id = 56; // int | FileMaker record id
 
 try {
-    $result = $apiInstance->getPayment($str_database, $i_record_id);
+    $result = $apiInstance->getStockTransactions($str_database, $i_record_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentsApi->getPayment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StockTransactionsApi->getStockTransactions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\iPosExchanger\Model\FindPaymentsResponse**](../Model/FindPaymentsResponse.md)
+[**\iPosExchanger\Model\FindStockTransactionResponse**](../Model/FindStockTransactionResponse.md)
 
 ### Authorization
 
@@ -119,10 +119,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **updatePayment**
-> \iPosExchanger\Model\DefaultResponseObject updatePayment($str_database, $i_record_id, $create_or_update_payment_request)
+# **updateStockTransaction**
+> \iPosExchanger\Model\DefaultResponseObject updateStockTransaction($str_database, $i_record_id, $create_or_update_stock_transaction_request)
 
-Updates a Payment
+Updates a Stock Transaction
 
 ### Example
 ```php
@@ -134,7 +134,7 @@ $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKey('Aut
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new iPosExchanger\Api\PaymentsApi(
+$apiInstance = new iPosExchanger\Api\StockTransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -142,13 +142,13 @@ $apiInstance = new iPosExchanger\Api\PaymentsApi(
 );
 $str_database = 'str_database_example'; // string | Target Database in FileMaker
 $i_record_id = 56; // int | FileMaker record id
-$create_or_update_payment_request = new \iPosExchanger\Model\CreateOrUpdatePaymentRequest(); // \iPosExchanger\Model\CreateOrUpdatePaymentRequest | 
+$create_or_update_stock_transaction_request = new \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest(); // \iPosExchanger\Model\CreateOrUpdateStockTransactionRequest | 
 
 try {
-    $result = $apiInstance->updatePayment($str_database, $i_record_id, $create_or_update_payment_request);
+    $result = $apiInstance->updateStockTransaction($str_database, $i_record_id, $create_or_update_stock_transaction_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentsApi->updatePayment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StockTransactionsApi->updateStockTransaction: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **str_database** | **string**| Target Database in FileMaker |
  **i_record_id** | **int**| FileMaker record id |
- **create_or_update_payment_request** | [**\iPosExchanger\Model\CreateOrUpdatePaymentRequest**](../Model/CreateOrUpdatePaymentRequest.md)|  | [optional]
+ **create_or_update_stock_transaction_request** | [**\iPosExchanger\Model\CreateOrUpdateStockTransactionRequest**](../Model/CreateOrUpdateStockTransactionRequest.md)|  | [optional]
 
 ### Return type
 
