@@ -819,6 +819,8 @@ definitions:
         type: string
       tax_city_rate:
         type: string
+      SPY_id:
+        type: string
 
   FindSalesReportRequest:
     type: object
