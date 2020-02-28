@@ -104,8 +104,11 @@ Class | Method | HTTP request | Description
 *SalesReportsApi* | [**findSalesReports**](docs/Api/SalesReportsApi.md#findsalesreports) | **POST** /{strDatabase}/layouts/api_SPY_Sale/_find | finds sales reports
 *SalesReportsApi* | [**getSalesReport**](docs/Api/SalesReportsApi.md#getsalesreport) | **GET** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | retrieves a Sales Report line
 *SalesReportsApi* | [**updateSalesReport**](docs/Api/SalesReportsApi.md#updatesalesreport) | **PATCH** /{strDatabase}/layouts/api_SPY_Sale/records/{iRecordID} | Updates a Sales Report
+*StockLinesApi* | [**createStockLine**](docs/Api/StockLinesApi.md#createstockline) | **POST** /{strDatabase}/layouts/api_lager/records | Creates a Stock line entry
 *StockLinesApi* | [**findStockLines**](docs/Api/StockLinesApi.md#findstocklines) | **POST** /{strDatabase}/layouts/api_lager/_find | finds stock lines
 *StockLinesApi* | [**getStockLines**](docs/Api/StockLinesApi.md#getstocklines) | **GET** /{strDatabase}/layouts/api_lager/records/{iRecordID} | retrieves a Stock line entry
+*StockLinesApi* | [**updateStockLine**](docs/Api/StockLinesApi.md#updatestockline) | **PATCH** /{strDatabase}/layouts/api_lager/records/{iRecordID} | Updates a Stock line entry
+*StockTransactionsApi* | [**createStockTransaction**](docs/Api/StockTransactionsApi.md#createstocktransaction) | **POST** /{strDatabase}/layouts/api_SPY_lagertrans/records | Creates a Stock Transaction
 *StockTransactionsApi* | [**findStockTransactions**](docs/Api/StockTransactionsApi.md#findstocktransactions) | **POST** /{strDatabase}/layouts/api_SPY_lagertrans/_find | finds stock Transactions (moves)
 *StockTransactionsApi* | [**getStockTransactions**](docs/Api/StockTransactionsApi.md#getstocktransactions) | **GET** /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID} | retrieves a Stock Transaction line
 *StockTransactionsApi* | [**updateStockTransaction**](docs/Api/StockTransactionsApi.md#updatestocktransaction) | **PATCH** /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID} | Updates a Stock Transaction
@@ -120,6 +123,7 @@ Class | Method | HTTP request | Description
  - [CreateOrUpdateProductRequest](docs/Model/CreateOrUpdateProductRequest.md)
  - [CreateOrUpdateProductTypeRequest](docs/Model/CreateOrUpdateProductTypeRequest.md)
  - [CreateOrUpdateSalesReportRequest](docs/Model/CreateOrUpdateSalesReportRequest.md)
+ - [CreateOrUpdateStockItemRequest](docs/Model/CreateOrUpdateStockItemRequest.md)
  - [CreateOrUpdateStockTransactionRequest](docs/Model/CreateOrUpdateStockTransactionRequest.md)
  - [CreateRecordResponse](docs/Model/CreateRecordResponse.md)
  - [CreateRecordResponseField](docs/Model/CreateRecordResponseField.md)

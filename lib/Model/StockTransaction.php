@@ -62,7 +62,9 @@ class StockTransaction implements ModelInterface, ArrayAccess
         'antal_lager' => 'string',
         'flytning' => 'string',
         'spy_api_done' => 'string',
-        'time_stamp' => 'string'
+        'time_stamp' => 'string',
+        'tekst' => 'string',
+        'id_tabel' => 'int'
     ];
 
     /**
@@ -76,7 +78,9 @@ class StockTransaction implements ModelInterface, ArrayAccess
         'antal_lager' => null,
         'flytning' => null,
         'spy_api_done' => null,
-        'time_stamp' => null
+        'time_stamp' => null,
+        'tekst' => null,
+        'id_tabel' => null
     ];
 
     /**
@@ -111,7 +115,9 @@ class StockTransaction implements ModelInterface, ArrayAccess
         'antal_lager' => 'Antal_lager',
         'flytning' => 'flytning',
         'spy_api_done' => 'spy_api_done',
-        'time_stamp' => 'TimeStamp'
+        'time_stamp' => 'TimeStamp',
+        'tekst' => 'Tekst',
+        'id_tabel' => 'ID_tabel'
     ];
 
     /**
@@ -125,7 +131,9 @@ class StockTransaction implements ModelInterface, ArrayAccess
         'antal_lager' => 'setAntalLager',
         'flytning' => 'setFlytning',
         'spy_api_done' => 'setSpyApiDone',
-        'time_stamp' => 'setTimeStamp'
+        'time_stamp' => 'setTimeStamp',
+        'tekst' => 'setTekst',
+        'id_tabel' => 'setIdTabel'
     ];
 
     /**
@@ -139,7 +147,9 @@ class StockTransaction implements ModelInterface, ArrayAccess
         'antal_lager' => 'getAntalLager',
         'flytning' => 'getFlytning',
         'spy_api_done' => 'getSpyApiDone',
-        'time_stamp' => 'getTimeStamp'
+        'time_stamp' => 'getTimeStamp',
+        'tekst' => 'getTekst',
+        'id_tabel' => 'getIdTabel'
     ];
 
     /**
@@ -208,6 +218,8 @@ class StockTransaction implements ModelInterface, ArrayAccess
         $this->container['flytning'] = isset($data['flytning']) ? $data['flytning'] : null;
         $this->container['spy_api_done'] = isset($data['spy_api_done']) ? $data['spy_api_done'] : null;
         $this->container['time_stamp'] = isset($data['time_stamp']) ? $data['time_stamp'] : null;
+        $this->container['tekst'] = isset($data['tekst']) ? $data['tekst'] : null;
+        $this->container['id_tabel'] = isset($data['id_tabel']) ? $data['id_tabel'] : null;
     }
 
     /**
@@ -374,6 +386,54 @@ class StockTransaction implements ModelInterface, ArrayAccess
     public function setTimeStamp($time_stamp)
     {
         $this->container['time_stamp'] = $time_stamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets tekst
+     *
+     * @return string|null
+     */
+    public function getTekst()
+    {
+        return $this->container['tekst'];
+    }
+
+    /**
+     * Sets tekst
+     *
+     * @param string|null $tekst tekst
+     *
+     * @return $this
+     */
+    public function setTekst($tekst)
+    {
+        $this->container['tekst'] = $tekst;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_tabel
+     *
+     * @return int|null
+     */
+    public function getIdTabel()
+    {
+        return $this->container['id_tabel'];
+    }
+
+    /**
+     * Sets id_tabel
+     *
+     * @param int|null $id_tabel id_tabel
+     *
+     * @return $this
+     */
+    public function setIdTabel($id_tabel)
+    {
+        $this->container['id_tabel'] = $id_tabel;
 
         return $this;
     }

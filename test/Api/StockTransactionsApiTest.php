@@ -72,6 +72,16 @@ class StockTransactionsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for createStockTransaction
+     *
+     * Creates a Stock Transaction.
+     *
+     */
+    public function testCreateStockTransaction()
+    {
+    }
+
+    /**
      * Test case for findStockTransactions
      *
      * finds stock Transactions (moves).

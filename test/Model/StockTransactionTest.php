@@ -117,4 +117,18 @@ class StockTransactionTest extends \PHPUnit_Framework_TestCase
     public function testPropertyTimeStamp()
     {
     }
+
+    /**
+     * Test attribute "tekst"
+     */
+    public function testPropertyTekst()
+    {
+    }
+
+    /**
+     * Test attribute "id_tabel"
+     */
+    public function testPropertyIdTabel()
+    {
+    }
 }
