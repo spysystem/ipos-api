@@ -415,6 +415,32 @@ paths:
         500:
           $ref: '#/responses/FileMakerAPIError'
 
+  /{strDatabase}/layouts/api_SPY_lagertrans/records:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - StockTransactions
+      operationId: createStockTransaction
+      summary: Creates a Stock Transaction
+      parameters:
+      - name: data
+        in: body
+        schema:
+          $ref: '#/definitions/CreateOrUpdateStockTransactionRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CreateRecordResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
+
   /{strDatabase}/layouts/api_SPY_lagertrans/records/{iRecordID}:
     parameters:
       - $ref: '#/parameters/strDatabase'
@@ -460,6 +486,31 @@ paths:
 #endregion
 
 #region Stock
+  /{strDatabase}/layouts/api_lager/records:
+    parameters:
+      - $ref: '#/parameters/strDatabase'
+    post:
+      tags:
+        - StockLines
+      operationId: createStockLine
+      summary: Creates a Stock line entry
+      parameters:
+      - name: data
+        in: body
+        schema:
+          $ref: '#/definitions/CreateOrUpdateStockItemRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DefaultResponseObject'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
   /{strDatabase}/layouts/api_lager/_find:
     parameters:
        - $ref: '#/parameters/strDatabase'
@@ -500,6 +551,28 @@ paths:
           description: successfull operation
           schema:
             $ref: '#/definitions/FindStockItemsResponse'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/FileMakerAPIError'
+        500:
+          $ref: '#/responses/FileMakerAPIError'
+
+    patch:
+      tags:
+        - StockLines
+      operationId: updateStockLine
+      summary: Updates a Stock line entry
+      parameters:
+      - name: data
+        in: body
+        schema:
+          $ref: '#/definitions/CreateOrUpdateStockItemRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DefaultResponseObject'
         401:
           $ref: '#/responses/Unauthorized'
         404:
@@ -642,9 +715,9 @@ definitions:
   MessageObject:
     type: object
     properties:
-      code:
+      'code':
         type: string
-      message:
+      'message':
         type: string
 
   EmptyObject:
@@ -653,37 +726,37 @@ definitions:
   DefaultResponseObject:
     type: object
     properties:
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
-      response:
+      'response':
         $ref: '#/definitions/EmptyObject'
 
   InternalRecordFields:
     type: object
     properties:
-      portalData:
+      'portalData':
         type: object
-      recordId:
+      'recordId':
         type: string
-      modId:
+      'modId':
         type: string
 
   CreateRecordResponseField:
     type: object
     properties:
-      recordId:
+      'recordId':
         type: string
-      modId:
+      'modId':
         type: string
 
   CreateRecordResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/CreateRecordResponseField'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -693,16 +766,16 @@ definitions:
   TokenResponseField:
     type: object
     properties:
-      token:
+      'token':
         description: Authentication Token
         type: string
 
   AuthenticationResponseObject:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/TokenResponseField'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -712,68 +785,68 @@ definitions:
   Product:
     type: object
     properties:
-      ID:
+      'ID':
         type: string
         description: ID (= EAN)
-      EAN nr:
+      'EAN nr':
         type: string
         description: EAN code
-      Varetekst:
+      'Varetekst':
         type: string
         description: Style Name  + Color + Size (+Assortment)
-      VareBeskrivelse:
+      'VareBeskrivelse':
         type: string
         description: Type + Category + Quality + Weight + Country
-      Varenr_Leverandør:
+      'Varenr_Leverandør':
         type: string
         description: Style No
-      Salgspris:
+      'Salgspris':
         type: string
         description: Sales Price
-      Salgspris Incl moms:
+      'Salgspris Incl moms':
         type: string
         description: Sales price including taxes
-      Kostpris:
+      'Kostpris':
         type: string
         description: Engross Price customer currency
-      kostpris_DKK:
+      'kostpris_DKK':
         type: string
         description: Engross Price DKK
-      Avance i Kr:
+      'Avance i Kr':
         type: string
         description: round(sales price - cost price, 2)
-      ID_varegruppe:
+      'ID_varegruppe':
         type: string
         description: Spy Group ID
-      Lager Status ønskes:
+      'Lager Status ønskes':
         type: string
         description: Always set to 1
-      Color:
+      'Color':
         type: string
         description: Color
-      Size:
+      'Size':
         type: string
         description: Size
-      Moms_sats:
+      'Moms_sats':
         type: string
         description: VAT
-      Saeson:
+      'Saeson':
         type: string
         description: Season
-      Producent_navn:
+      'Producent_navn':
         type: string
         description: Brand
 
   FindProductRequest:
     type: object
     properties:
-      query:
+      'query':
         type: array
         items:
           $ref: '#/definitions/Product'
-      limit:
+      'limit':
         type: string
-      offset:
+      'offset':
         type: string
 
   ProductRecordObject:
@@ -781,13 +854,13 @@ definitions:
     - $ref: '#/definitions/InternalRecordFields'
     - type: object
       properties:
-        fieldData:
+        'fieldData':
           $ref: '#/definitions/Product'
 
   ProductRecordArray:
     type: object
     properties:
-      data:
+      'data':
         type: array
         items:
           $ref: '#/definitions/ProductRecordObject'
@@ -795,9 +868,9 @@ definitions:
   FindProductResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/ProductRecordArray'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -805,7 +878,7 @@ definitions:
   CreateOrUpdateProductRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/Product'
 #endregion
 
@@ -813,22 +886,22 @@ definitions:
   ProductType:
     type: object
     properties:
-      ID:
+      'ID':
         type: string
-      Gruppe:
+      'Gruppe':
         type: string
         description: Type name
 
   FindProductTypeRequest:
     type: object
     properties:
-      query:
+      'query':
         type: array
         items:
           $ref: '#/definitions/ProductType'
-      limit:
+      'limit':
         type: string
-      offset:
+      'offset':
         type: string
 
   ProductTypeRecordObject:
@@ -836,13 +909,13 @@ definitions:
     - $ref: '#/definitions/InternalRecordFields'
     - type: object
       properties:
-        fieldData:
+        'fieldData':
           $ref: '#/definitions/ProductType'
 
   ProductTypeRecordArray:
     type: object
     properties:
-      data:
+      'data':
         type: array
         items:
           $ref: '#/definitions/ProductTypeRecordObject'
@@ -850,9 +923,9 @@ definitions:
   FindProductTypeResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/ProductTypeRecordArray'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -860,7 +933,7 @@ definitions:
   CreateOrUpdateProductTypeRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/ProductType'
 #endregion
 
@@ -868,43 +941,43 @@ definitions:
   SalesReport:
     type: object
     properties:
-      Antal:
+      'Antal':
         type: string
-      ean:
+      'ean':
         type: string
-      SPY_a_pris:
+      'SPY_a_pris':
         type: string
-      UI_dato_bon:
+      'UI_dato_bon':
         type: string
-      Læg_ikke_på_lager:
+      'Læg_ikke_på_lager':
         type: string
-      SPY_relevant:
+      'SPY_relevant':
         type: string
-      SPY_done:
+      'SPY_done':
         type: string
-      id_lokation:
+      'id_lokation':
         type: string
-      tax_state_amount:
+      'tax_state_amount':
         type: string
-      tax_city_amount:
+      'tax_city_amount':
         type: string
-      tax_state_rate:
+      'tax_state_rate':
         type: string
-      tax_city_rate:
+      'tax_city_rate':
         type: string
-      SPY_id:
+      'SPY_id':
         type: string
 
   FindSalesReportRequest:
     type: object
     properties:
-      query:
+      'query':
         type: array
         items:
           $ref: '#/definitions/SalesReport'
-      limit:
+      'limit':
         type: string
-      offset:
+      'offset':
         type: string
 
   SalesReportRecordObject:
@@ -912,13 +985,13 @@ definitions:
     - $ref: '#/definitions/InternalRecordFields'
     - type: object
       properties:
-        fieldData:
+        'fieldData':
           $ref: '#/definitions/SalesReport'
 
   SalesReportRecordArray:
     type: object
     properties:
-      data:
+      'data':
         type: array
         items:
           $ref: '#/definitions/SalesReportRecordObject'
@@ -926,9 +999,9 @@ definitions:
   FindSalesReportResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/SalesReportRecordArray'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -936,7 +1009,7 @@ definitions:
   CreateOrUpdateSalesReportRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/SalesReport'
 #endregion
 
@@ -944,25 +1017,25 @@ definitions:
   StockItem:
     type: object
     properties:
-      id_vare:
+      'id_vare':
         type: string
-      id_lokation:
+      'id_lokation':
         type: string
-      Antal_på_lager:
+      'Antal_på_lager':
         type: string
-      dato_mod:
+      'dato_mod':
         type: string
 
   FindStockItemsRequest:
     type: object
     properties:
-      query:
+      'query':
         type: array
         items:
           $ref: '#/definitions/StockItem'
-      limit:
+      'limit':
         type: string
-      offset:
+      'offset':
         type: string
 
   StockItemsRecordObject:
@@ -970,13 +1043,13 @@ definitions:
       - $ref: '#/definitions/InternalRecordFields'
       - type: object
         properties:
-          fieldData:
+          'fieldData':
             $ref: '#/definitions/StockItem'
 
   StockItemsRecordArray:
     type: object
     properties:
-      data:
+      'data':
         type: array
         items:
           $ref: '#/definitions/StockItemsRecordObject'
@@ -984,12 +1057,18 @@ definitions:
   FindStockItemsResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/StockItemsRecordArray'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
+
+  CreateOrUpdateStockItemRequest:
+    type: object
+    properties:
+      'fieldData':
+        $ref: '#/definitions/StockItem'
 #endregion
 
 #region StockTransactions
@@ -1008,17 +1087,21 @@ definitions:
         type: string
       'TimeStamp':
         type: string
+      'Tekst':
+        type: string
+      'ID_tabel':
+        type: integer
 
   FindStockTransactionRequest:
     type: object
     properties:
-      query:
+      'query':
         type: array
         items:
           $ref: '#/definitions/StockTransaction'
-      limit:
+      'limit':
         type: string
-      offset:
+      'offset':
         type: string
 
   StockTransactionRecordObject:
@@ -1026,13 +1109,13 @@ definitions:
     - $ref: '#/definitions/InternalRecordFields'
     - type: object
       properties:
-        fieldData:
+        'fieldData':
           $ref: '#/definitions/StockTransaction'
 
   StockTransactionRecordArray:
     type: object
     properties:
-      data:
+      'data':
         type: array
         items:
           $ref: '#/definitions/StockTransactionRecordObject'
@@ -1040,9 +1123,9 @@ definitions:
   FindStockTransactionResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/StockTransactionRecordArray'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -1050,7 +1133,7 @@ definitions:
   CreateOrUpdateStockTransactionRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/StockTransaction'
 #endregion
 
@@ -1058,17 +1141,17 @@ definitions:
   Delivery:
     type: object
     properties:
-      id_uuid:
+      'id_uuid':
         type: string
-      id_lokation:
+      'id_lokation':
         type: string
-      Dato_opr:
+      'Dato_opr':
         type: string
 
   CreateOrUpdateDeliveryRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/Delivery'
 #endregion
 
@@ -1076,21 +1159,21 @@ definitions:
   DeliveryLine:
     type: object
     properties:
-      id_varemodtagelse:
+      'id_varemodtagelse':
         type: string
-      id_vare:
+      'id_vare':
         type: string
-      Antal_modtaget:
+      'Antal_modtaget':
         type: string
-      EAN:
+      'EAN':
         type: string
-      Kospris_nu:
+      'Kospris_nu':
         type: string
 
   CreateOrUpdateDeliveryLineRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/DeliveryLine'
 #endregion
 
@@ -1098,35 +1181,35 @@ definitions:
   Payment:
     type: object
     properties:
-      dato:
+      'dato':
         type: string
-      tekst:
+      'tekst':
         type: string
-      kto_debet:
+      'kto_debet':
         type: string
-      kto_kredit:
+      'kto_kredit':
         type: string
-      Beløb:
+      'Beløb':
         type: number
-      SPY_relevant:
+      'SPY_relevant':
         type: string
-      SPY_done:
+      'SPY_done':
         type: string
-      id_lokation:
+      'id_lokation':
         type: string
-      spy_type:
+      'spy_type':
         type: string
 
   FindPaymentsRequest:
     type: object
     properties:
-      query:
+      'query':
         type: array
         items:
           $ref: '#/definitions/Payment'
-      limit:
+      'limit':
         type: string
-      offset:
+      'offset':
         type: string
 
   PaymentRecordObject:
@@ -1134,13 +1217,13 @@ definitions:
     - $ref: '#/definitions/InternalRecordFields'
     - type: object
       properties:
-        fieldData:
+        'fieldData':
           $ref: '#/definitions/Payment'
 
   PaymentRecordArray:
     type: object
     properties:
-      data:
+      'data':
         type: array
         items:
           $ref: '#/definitions/PaymentRecordObject'
@@ -1148,9 +1231,9 @@ definitions:
   FindPaymentsResponse:
     type: object
     properties:
-      response:
+      'response':
         $ref: '#/definitions/PaymentRecordArray'
-      messages:
+      'messages':
         type: array
         items:
           $ref: '#/definitions/MessageObject'
@@ -1158,6 +1241,6 @@ definitions:
   CreateOrUpdatePaymentRequest:
     type: object
     properties:
-      fieldData:
+      'fieldData':
         $ref: '#/definitions/Payment'
 #endregion
