@@ -1,26 +1,32 @@
 # iPosExchanger\DeliveriesApi
 
-All URIs are relative to *https://fm.macpartner.dk/fmi/data/v1/databases*
+All URIs are relative to https://fm.macpartner.dk/fmi/data/v1/databases, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createDelivery**](DeliveriesApi.md#createDelivery) | **POST** /{strDatabase}/layouts/api_SPY_Varemodtagelse/records | Creates a new Delivery
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createDelivery()**](DeliveriesApi.md#createDelivery) | **POST** /{strDatabase}/layouts/api_SPY_Varemodtagelse/records | Creates a new Delivery |
 
 
-# **createDelivery**
-> \iPosExchanger\Model\CreateRecordResponse createDelivery($str_database, $create_or_update_delivery_request)
+## `createDelivery()`
+
+```php
+createDelivery($str_database, $data): \iPosExchanger\Model\CreateRecordResponse
+```
 
 Creates a new Delivery
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
 
 // Configure API key authorization: Token
 $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = iPosExchanger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new iPosExchanger\Api\DeliveriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -29,23 +35,22 @@ $apiInstance = new iPosExchanger\Api\DeliveriesApi(
     $config
 );
 $str_database = 'str_database_example'; // string | Target Database in FileMaker
-$create_or_update_delivery_request = new \iPosExchanger\Model\CreateOrUpdateDeliveryRequest(); // \iPosExchanger\Model\CreateOrUpdateDeliveryRequest | Record to be created
+$data = new \iPosExchanger\Model\CreateOrUpdateDeliveryRequest(); // \iPosExchanger\Model\CreateOrUpdateDeliveryRequest | Record to be created
 
 try {
-    $result = $apiInstance->createDelivery($str_database, $create_or_update_delivery_request);
+    $result = $apiInstance->createDelivery($str_database, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DeliveriesApi->createDelivery: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **str_database** | **string**| Target Database in FileMaker |
- **create_or_update_delivery_request** | [**\iPosExchanger\Model\CreateOrUpdateDeliveryRequest**](../Model/CreateOrUpdateDeliveryRequest.md)| Record to be created | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **str_database** | **string**| Target Database in FileMaker | |
+| **data** | [**\iPosExchanger\Model\CreateOrUpdateDeliveryRequest**](../Model/CreateOrUpdateDeliveryRequest.md)| Record to be created | [optional] |
 
 ### Return type
 
@@ -57,8 +62,9 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
