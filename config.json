@@ -1,8 +1,0 @@
-{
-	"invokerPackage": "iPosExchanger",
-	"modelPackage": "Model",
-	"apiPackage": "Api",
-	"packagePath": "",
-	"composerVendorName": "spysystem",
-	"composerProjectName": "ipos-api"
-}
