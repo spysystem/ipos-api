@@ -1,6 +1,5 @@
 {
     "name": "spysystem/ipos-api",
-    "version": "1.8.0.1",
     "description": "OpenAPI description for the iPOS integration for FileMaker 17 API",
     "keywords": [
         "openapitools",

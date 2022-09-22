@@ -1,6 +1,5 @@
 # https://openapi-generator.tech/docs/usage/#generate
 apiPackage: Api
-artifactVersion: 1.8.0.1
 gitRepoId: ipos-api
 gitUserId: spysystem
 invokerPackage: iPosExchanger
