@@ -21,3 +21,11 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+.gitignore
+.php-cs-fixer.dist.php
+.php_cs
+.travis.yml
+autoload.php
+git_push.sh
+phpunit.xml.dist

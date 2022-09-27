@@ -1,6 +1,3 @@
-.gitignore
-.php-cs-fixer.dist.php
-.travis.yml
 README.md
 composer.json
 docs/Api/AuthenticationApi.md
@@ -65,7 +62,6 @@ docs/Model/StockTransactionRecordArray.md
 docs/Model/StockTransactionRecordObject.md
 docs/Model/StockTransactionRecordObjectAllOf.md
 docs/Model/TokenResponseField.md
-git_push.sh
 lib/Api/AuthenticationApi.php
 lib/Api/DeliveriesApi.php
 lib/Api/DeliveryLinesApi.php
@@ -239,7 +235,6 @@ lib/Model/TokenResponseField.php
 lib/Model/TokenResponseFieldModelAttributes.php
 lib/Model/TokenResponseFieldModelFields.php
 lib/ObjectSerializer.php
-phpunit.xml.dist
 test/Api/AuthenticationApiTest.php
 test/Api/DeliveriesApiTest.php
 test/Api/DeliveryLinesApiTest.php
