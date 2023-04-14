@@ -548,6 +548,7 @@ class StockTransactionsApi
      * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockTransactionRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockTransactions'] to see the possible values for this operation
      *
@@ -555,9 +556,9 @@ class StockTransactionsApi
      * @throws \InvalidArgumentException
      * @return \iPosExchanger\Model\FindStockTransactionResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function findStockTransactions($str_database, $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
+    public function findStockTransactions($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
     {
-        list($response) = $this->findStockTransactionsWithHttpInfo($str_database, $data, $contentType);
+        list($response) = $this->findStockTransactionsWithHttpInfo($str_database, $x_spy_use_next_middleware, $data, $contentType);
         return $response;
     }
 
@@ -567,6 +568,7 @@ class StockTransactionsApi
      * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockTransactionRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockTransactions'] to see the possible values for this operation
      *
@@ -574,9 +576,9 @@ class StockTransactionsApi
      * @throws \InvalidArgumentException
      * @return array of \iPosExchanger\Model\FindStockTransactionResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function findStockTransactionsWithHttpInfo($str_database, $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
+    public function findStockTransactionsWithHttpInfo($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
     {
-        $request = $this->findStockTransactionsRequest($str_database, $data, $contentType);
+        $request = $this->findStockTransactionsRequest($str_database, $x_spy_use_next_middleware, $data, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -737,15 +739,16 @@ class StockTransactionsApi
      * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockTransactionRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findStockTransactionsAsync($str_database, $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
+    public function findStockTransactionsAsync($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
     {
-        return $this->findStockTransactionsAsyncWithHttpInfo($str_database, $data, $contentType)
+        return $this->findStockTransactionsAsyncWithHttpInfo($str_database, $x_spy_use_next_middleware, $data, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -759,16 +762,17 @@ class StockTransactionsApi
      * finds stock Transactions (moves)
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockTransactionRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findStockTransactionsAsyncWithHttpInfo($str_database, $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
+    public function findStockTransactionsAsyncWithHttpInfo($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
     {
         $returnType = '\iPosExchanger\Model\FindStockTransactionResponse';
-        $request = $this->findStockTransactionsRequest($str_database, $data, $contentType);
+        $request = $this->findStockTransactionsRequest($str_database, $x_spy_use_next_middleware, $data, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -810,13 +814,14 @@ class StockTransactionsApi
      * Create request for operation 'findStockTransactions'
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockTransactionRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function findStockTransactionsRequest($str_database, $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
+    public function findStockTransactionsRequest($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockTransactions'][0])
     {
 
         // verify the required parameter 'str_database' is set
@@ -828,6 +833,7 @@ class StockTransactionsApi
 
 
 
+
         $resourcePath = '/{strDatabase}/layouts/api_SPY_lagertrans/_find';
         $formParams = [];
         $queryParams = [];
@@ -836,6 +842,10 @@ class StockTransactionsApi
         $multipart = false;
 
 
+        // header params
+        if ($x_spy_use_next_middleware !== null) {
+            $headerParams['X-Spy-UseNextMiddleware'] = ObjectSerializer::toHeaderValue($x_spy_use_next_middleware);
+        }
 
         // path params
         if ($str_database !== null) {
