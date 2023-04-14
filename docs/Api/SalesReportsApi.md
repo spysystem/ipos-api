@@ -12,7 +12,7 @@ All URIs are relative to https://fm.macpartner.dk/fmi/data/v1/databases, except 
 ## `findSalesReports()`
 
 ```php
-findSalesReports($str_database, $data): \iPosExchanger\Model\FindSalesReportResponse
+findSalesReports($str_database, $x_spy_use_next_middleware, $data): \iPosExchanger\Model\FindSalesReportResponse
 ```
 
 finds sales reports
@@ -37,10 +37,11 @@ $apiInstance = new iPosExchanger\Api\SalesReportsApi(
     $config
 );
 $str_database = 'str_database_example'; // string | Target Database in FileMaker
+$x_spy_use_next_middleware = '1'; // string | use Next Middleware to paginate
 $data = new \iPosExchanger\Model\FindSalesReportRequest(); // \iPosExchanger\Model\FindSalesReportRequest | Search data
 
 try {
-    $result = $apiInstance->findSalesReports($str_database, $data);
+    $result = $apiInstance->findSalesReports($str_database, $x_spy_use_next_middleware, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SalesReportsApi->findSalesReports: ', $e->getMessage(), PHP_EOL;
@@ -52,6 +53,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **str_database** | **string**| Target Database in FileMaker | |
+| **x_spy_use_next_middleware** | **string**| use Next Middleware to paginate | [optional] [default to &#39;1&#39;] |
 | **data** | [**\iPosExchanger\Model\FindSalesReportRequest**](../Model/FindSalesReportRequest.md)| Search data | [optional] |
 
 ### Return type

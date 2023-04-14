@@ -548,6 +548,7 @@ class StockLinesApi
      * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockItemsRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockLines'] to see the possible values for this operation
      *
@@ -555,9 +556,9 @@ class StockLinesApi
      * @throws \InvalidArgumentException
      * @return \iPosExchanger\Model\FindStockItemsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function findStockLines($str_database, $data = null, string $contentType = self::contentTypes['findStockLines'][0])
+    public function findStockLines($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockLines'][0])
     {
-        list($response) = $this->findStockLinesWithHttpInfo($str_database, $data, $contentType);
+        list($response) = $this->findStockLinesWithHttpInfo($str_database, $x_spy_use_next_middleware, $data, $contentType);
         return $response;
     }
 
@@ -567,6 +568,7 @@ class StockLinesApi
      * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockItemsRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockLines'] to see the possible values for this operation
      *
@@ -574,9 +576,9 @@ class StockLinesApi
      * @throws \InvalidArgumentException
      * @return array of \iPosExchanger\Model\FindStockItemsResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function findStockLinesWithHttpInfo($str_database, $data = null, string $contentType = self::contentTypes['findStockLines'][0])
+    public function findStockLinesWithHttpInfo($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockLines'][0])
     {
-        $request = $this->findStockLinesRequest($str_database, $data, $contentType);
+        $request = $this->findStockLinesRequest($str_database, $x_spy_use_next_middleware, $data, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -737,15 +739,16 @@ class StockLinesApi
      * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockItemsRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockLines'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findStockLinesAsync($str_database, $data = null, string $contentType = self::contentTypes['findStockLines'][0])
+    public function findStockLinesAsync($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockLines'][0])
     {
-        return $this->findStockLinesAsyncWithHttpInfo($str_database, $data, $contentType)
+        return $this->findStockLinesAsyncWithHttpInfo($str_database, $x_spy_use_next_middleware, $data, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -759,16 +762,17 @@ class StockLinesApi
      * finds stock lines
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockItemsRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockLines'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findStockLinesAsyncWithHttpInfo($str_database, $data = null, string $contentType = self::contentTypes['findStockLines'][0])
+    public function findStockLinesAsyncWithHttpInfo($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockLines'][0])
     {
         $returnType = '\iPosExchanger\Model\FindStockItemsResponse';
-        $request = $this->findStockLinesRequest($str_database, $data, $contentType);
+        $request = $this->findStockLinesRequest($str_database, $x_spy_use_next_middleware, $data, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -810,13 +814,14 @@ class StockLinesApi
      * Create request for operation 'findStockLines'
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindStockItemsRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findStockLines'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function findStockLinesRequest($str_database, $data = null, string $contentType = self::contentTypes['findStockLines'][0])
+    public function findStockLinesRequest($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findStockLines'][0])
     {
 
         // verify the required parameter 'str_database' is set
@@ -828,6 +833,7 @@ class StockLinesApi
 
 
 
+
         $resourcePath = '/{strDatabase}/layouts/api_lager/_find';
         $formParams = [];
         $queryParams = [];
@@ -836,6 +842,10 @@ class StockLinesApi
         $multipart = false;
 
 
+        // header params
+        if ($x_spy_use_next_middleware !== null) {
+            $headerParams['X-Spy-UseNextMiddleware'] = ObjectSerializer::toHeaderValue($x_spy_use_next_middleware);
+        }
 
         // path params
         if ($str_database !== null) {

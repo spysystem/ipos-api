@@ -75,7 +75,7 @@ try {
 ## `findStockLines()`
 
 ```php
-findStockLines($str_database, $data): \iPosExchanger\Model\FindStockItemsResponse
+findStockLines($str_database, $x_spy_use_next_middleware, $data): \iPosExchanger\Model\FindStockItemsResponse
 ```
 
 finds stock lines
@@ -100,10 +100,11 @@ $apiInstance = new iPosExchanger\Api\StockLinesApi(
     $config
 );
 $str_database = 'str_database_example'; // string | Target Database in FileMaker
+$x_spy_use_next_middleware = '1'; // string | use Next Middleware to paginate
 $data = new \iPosExchanger\Model\FindStockItemsRequest(); // \iPosExchanger\Model\FindStockItemsRequest | Search data
 
 try {
-    $result = $apiInstance->findStockLines($str_database, $data);
+    $result = $apiInstance->findStockLines($str_database, $x_spy_use_next_middleware, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StockLinesApi->findStockLines: ', $e->getMessage(), PHP_EOL;
@@ -115,6 +116,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **str_database** | **string**| Target Database in FileMaker | |
+| **x_spy_use_next_middleware** | **string**| use Next Middleware to paginate | [optional] [default to &#39;1&#39;] |
 | **data** | [**\iPosExchanger\Model\FindStockItemsRequest**](../Model/FindStockItemsRequest.md)| Search data | [optional] |
 
 ### Return type

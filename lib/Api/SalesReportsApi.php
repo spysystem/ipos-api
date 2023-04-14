@@ -175,6 +175,7 @@ class SalesReportsApi
      * finds sales reports
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindSalesReportRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findSalesReports'] to see the possible values for this operation
      *
@@ -182,9 +183,9 @@ class SalesReportsApi
      * @throws \InvalidArgumentException
      * @return \iPosExchanger\Model\FindSalesReportResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject
      */
-    public function findSalesReports($str_database, $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
+    public function findSalesReports($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
     {
-        list($response) = $this->findSalesReportsWithHttpInfo($str_database, $data, $contentType);
+        list($response) = $this->findSalesReportsWithHttpInfo($str_database, $x_spy_use_next_middleware, $data, $contentType);
         return $response;
     }
 
@@ -194,6 +195,7 @@ class SalesReportsApi
      * finds sales reports
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindSalesReportRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findSalesReports'] to see the possible values for this operation
      *
@@ -201,9 +203,9 @@ class SalesReportsApi
      * @throws \InvalidArgumentException
      * @return array of \iPosExchanger\Model\FindSalesReportResponse|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject|\iPosExchanger\Model\DefaultResponseObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function findSalesReportsWithHttpInfo($str_database, $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
+    public function findSalesReportsWithHttpInfo($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
     {
-        $request = $this->findSalesReportsRequest($str_database, $data, $contentType);
+        $request = $this->findSalesReportsRequest($str_database, $x_spy_use_next_middleware, $data, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -364,15 +366,16 @@ class SalesReportsApi
      * finds sales reports
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindSalesReportRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findSalesReports'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findSalesReportsAsync($str_database, $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
+    public function findSalesReportsAsync($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
     {
-        return $this->findSalesReportsAsyncWithHttpInfo($str_database, $data, $contentType)
+        return $this->findSalesReportsAsyncWithHttpInfo($str_database, $x_spy_use_next_middleware, $data, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -386,16 +389,17 @@ class SalesReportsApi
      * finds sales reports
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindSalesReportRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findSalesReports'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findSalesReportsAsyncWithHttpInfo($str_database, $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
+    public function findSalesReportsAsyncWithHttpInfo($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
     {
         $returnType = '\iPosExchanger\Model\FindSalesReportResponse';
-        $request = $this->findSalesReportsRequest($str_database, $data, $contentType);
+        $request = $this->findSalesReportsRequest($str_database, $x_spy_use_next_middleware, $data, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -437,13 +441,14 @@ class SalesReportsApi
      * Create request for operation 'findSalesReports'
      *
      * @param  string $str_database Target Database in FileMaker (required)
+     * @param  string $x_spy_use_next_middleware use Next Middleware to paginate (optional, default to '1')
      * @param  \iPosExchanger\Model\FindSalesReportRequest $data Search data (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['findSalesReports'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function findSalesReportsRequest($str_database, $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
+    public function findSalesReportsRequest($str_database, $x_spy_use_next_middleware = '1', $data = null, string $contentType = self::contentTypes['findSalesReports'][0])
     {
 
         // verify the required parameter 'str_database' is set
@@ -455,6 +460,7 @@ class SalesReportsApi
 
 
 
+
         $resourcePath = '/{strDatabase}/layouts/api_SPY_Sale/_find';
         $formParams = [];
         $queryParams = [];
@@ -463,6 +469,10 @@ class SalesReportsApi
         $multipart = false;
 
 
+        // header params
+        if ($x_spy_use_next_middleware !== null) {
+            $headerParams['X-Spy-UseNextMiddleware'] = ObjectSerializer::toHeaderValue($x_spy_use_next_middleware);
+        }
 
         // path params
         if ($str_database !== null) {
