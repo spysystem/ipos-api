@@ -332,6 +332,11 @@ paths:
         description: Search data
         schema:
           $ref: '#/definitions/FindSalesReportRequest'
+      - name: X-Spy-UseNextMiddleware
+        type: string
+        in: header
+        description: use Next Middleware to paginate
+        default: 1
       responses:
         200:
           description: successfull operation
@@ -525,6 +530,11 @@ paths:
         description: Search data
         schema:
           $ref: '#/definitions/FindStockItemsRequest'
+      - name: X-Spy-UseNextMiddleware
+        type: string
+        in: header
+        description: use Next Middleware to paginate
+        default: 1
       responses:
         200:
           description: successfull operation
